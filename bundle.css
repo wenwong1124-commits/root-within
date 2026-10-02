@@ -1,0 +1,282 @@
+/* Root Within. Every class maps to a Squarespace section or block (see each
+   component's README). Paste into Design > Custom CSS what settings can't reach. */
+
+.rw { --grain: url("assets/paper-grain.png"); background: var(--surface); color: var(--ink); font-family: var(--font-serif); font-size: 18px; line-height: 1.65; -webkit-font-smoothing: antialiased; }
+.rw *, .rw *::before, .rw *::after { box-sizing: border-box; }
+
+/* Paper grain: one transparent tile over every section colour.
+   Squarespace: .page-section, #footer-sections { background-image: url(paper-grain-overlay.png); background-size: 600px; } */
+.rw-section, .rw-header, .rw-arc-header, .rw-topbar, .rw-footer { background-color: var(--surface); background-image: var(--grain); background-size: 600px 600px; color: var(--ink); }
+.rw-section { padding: var(--space-6) var(--space-5); position: relative; }
+.rw-section.alt { background-color: var(--surface-alt); }
+.rw-section.accent { background-color: var(--surface-accent); }
+.rw-inner { max-width: var(--content-max); margin: 0 auto; }
+.rw-narrow { max-width: var(--text-max); margin: 0 auto; }
+.rw-center { text-align: center; }
+.rw p { margin: var(--space-2) 0 0; }
+.rw a { color: var(--accent); text-underline-offset: 4px; text-decoration-thickness: 1px; }
+
+/* Type */
+.rw-label { font-family: var(--font-serif); font-size: 12px; line-height: 1.5; font-weight: 600; letter-spacing: .24em; text-transform: uppercase; margin: 0; }
+.rw-eyebrow { font-family: var(--font-serif); font-size: 12px; font-weight: 600; letter-spacing: .24em; text-transform: uppercase; color: var(--accent); margin: 0 0 var(--space-2); }
+.rw-index { font-family: var(--font-serif); font-size: 14px; font-weight: 500; letter-spacing: .04em; margin: 0; }
+.rw-display { font-family: var(--font-display); font-size: 68px; line-height: 1.02; font-weight: 300; letter-spacing: -.01em; margin: 0; }
+.rw-h1 { font-family: var(--font-display); font-size: 50px; line-height: 1.08; font-weight: 300; margin: 0; }
+.rw-h2 { font-family: var(--font-display); font-size: 38px; line-height: 1.15; font-weight: 400; margin: 0; }
+.rw-h3 { font-family: var(--font-display); font-size: 26px; line-height: 1.25; font-weight: 500; margin: 0; }
+.rw-caps { font-family: var(--font-display); font-size: 21px; line-height: 1.55; font-weight: 500; letter-spacing: .22em; text-transform: uppercase; margin: 0; }
+.rw-quote { font-family: var(--font-display); font-style: italic; font-size: 30px; line-height: 1.35; margin: 0; }
+.rw-lead { font-size: 21px; line-height: 1.6; }
+.rw-small { font-size: 15px; line-height: 1.55; color: var(--ink-muted); }
+.rw-muted { color: var(--ink-muted); }
+.rw-hand { font-family: var(--font-hand); font-size: 28px; line-height: 1.2; color: var(--accent); font-weight: 400; margin: 0; }
+
+/* Buttons: square, small caps. Squarespace Site Styles > Buttons: shape Square */
+.rw-btn { display: inline-flex; align-items: center; gap: 12px; padding: 17px 30px; border-radius: 0; border: 1px solid transparent; font-family: var(--font-serif); font-size: 12px; line-height: 1.2; font-weight: 600; letter-spacing: .24em; text-transform: uppercase; text-decoration: none; white-space: nowrap; cursor: pointer; transition: background-color .25s, color .25s, border-color .25s; }
+.rw a.rw-btn { text-decoration: none; }
+.rw-btn.primary, .rw a.rw-btn.primary { background: var(--button-bg); color: var(--on-button); }
+.rw-btn.primary:hover { background: var(--button-hover); }
+.rw-btn.outline, .rw a.rw-btn.outline { background: transparent; color: var(--ink); border-color: var(--line-strong); }
+.rw-btn.outline:hover { border-color: var(--ink); }
+.rw-arrow-link, .rw a.rw-arrow-link { display: inline-flex; align-items: center; gap: 14px; font-size: 12px; font-weight: 600; letter-spacing: .24em; text-transform: uppercase; color: var(--ink); text-decoration: none; padding-bottom: 8px; border-bottom: 1px solid var(--line-strong); }
+.rw-arrow-link::after { content: "\27F6"; font-family: var(--font-display); font-size: 22px; letter-spacing: 0; line-height: 0; }
+.rw-arrow-link:hover { border-bottom-color: var(--ink); }
+.rw a:focus-visible, .rw button:focus-visible, .rw input:focus-visible, .rw select:focus-visible, .rw textarea:focus-visible, .rw summary:focus-visible { outline: 2px solid var(--focus); outline-offset: 3px; }
+
+/* Top bar + header: split nav around a centred logo (Boerum) */
+.rw-topbar { background-color: var(--brand-forest); color: var(--brand-cream); text-align: center; padding: 9px var(--space-3); font-size: 11px; font-weight: 600; letter-spacing: .24em; text-transform: uppercase; }
+.rw-header { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: var(--space-4); padding: 20px var(--space-5); }
+.rw-header img { height: 92px; width: auto; display: block; }
+.rw-nav { display: flex; gap: 30px; list-style: none; margin: 0; padding: 0; align-items: center; }
+.rw-nav.left { justify-content: flex-end; }
+.rw-nav.right { justify-content: flex-start; }
+.rw-nav a { font-size: 12px; font-weight: 600; letter-spacing: .24em; text-transform: uppercase; color: var(--ink); text-decoration: none; padding-bottom: 4px; border-bottom: 1px solid transparent; }
+.rw-nav a:hover, .rw-nav a[aria-current="page"] { border-bottom-color: var(--ink); }
+
+/* Hero: stacked caps intro + illustrated banner (GOBE) */
+.rw-hero-top { text-align: center; max-width: 760px; margin: 0 auto; }
+.rw-banner { position: relative; margin-top: var(--space-5); aspect-ratio: 1120 / 400; background: var(--brand-sky) center / cover no-repeat; overflow: hidden; }
+.rw-banner-caption { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; color: var(--brand-forest); }
+.rw-note { position: absolute; display: flex; align-items: flex-end; gap: 4px; pointer-events: none; }
+.rw-note img { width: 120px; height: auto; display: block; }
+
+/* Journey (GOBE progress) */
+.rw-track { height: 6px; border: 1px solid var(--line-strong); margin: var(--space-4) 0 var(--space-3); position: relative; }
+.rw-track span { position: absolute; inset: 0 auto 0 0; width: 33%; background: var(--brand-sage); }
+.rw-steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-4); }
+.rw-steps > div:nth-child(2) { text-align: center; }
+.rw-steps > div:nth-child(3) { text-align: right; }
+
+/* Icon grid (GOBE) */
+.rw-icons { display: grid; grid-template-columns: repeat(3, 1fr); gap: 56px var(--space-4); margin-top: 56px; }
+.rw-icon-card img { width: 104px; height: 104px; display: block; margin: 0 0 22px -8px; }
+.rw-icon-card .rw-index { margin-bottom: var(--space-1); }
+.rw-icon-card p { font-size: 16px; color: var(--ink-muted); margin-top: 8px; }
+
+/* Service table rows (Boerum) */
+.rw-rows { border-top: 1px solid var(--line); margin-top: 56px; }
+.rw-row { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; align-items: center; border-bottom: 1px solid var(--line); outline: 1px solid transparent; outline-offset: -1px; transition: outline-color .2s; }
+.rw-row:hover { outline-color: var(--ink); }
+.rw-row > * { padding: 30px var(--space-3); text-align: center; }
+.rw-row > * + * { border-left: 1px solid var(--line); }
+.rw-row .rw-caps { font-size: 19px; }
+.rw-row .rw-label { color: var(--ink); }
+.rw-row a.rw-label { text-decoration: none; }
+.rw-row-desc { grid-column: 1 / -1; border-left: 0 !important; padding-top: 0 !important; text-align: center; color: var(--ink-muted); font-size: 16px; }
+
+/* Boerum split: image + centred paragraph */
+.rw-split { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-5); align-items: center; }
+.rw-photo { aspect-ratio: 4 / 5; background: var(--brand-mist) center / cover no-repeat; position: relative; }
+.rw-photo-tag { position: absolute; left: 16px; bottom: 14px; font-size: 11px; font-weight: 600; letter-spacing: .24em; text-transform: uppercase; color: var(--brand-forest); background: var(--brand-paper); padding: 6px 10px; }
+.rw-centered-copy { text-align: center; max-width: 440px; margin: 0 auto; }
+
+/* Fact list (Boerum timeline) */
+.rw-facts { list-style: none; padding: 0; margin: 0; text-align: center; }
+.rw-facts li { margin: 0 0 22px; }
+.rw-facts .rw-label { color: var(--accent); }
+.rw-facts span { display: block; font-size: 16px; line-height: 1.45; margin-top: 2px; }
+.rw-profile { display: grid; grid-template-columns: 220px 1fr 1fr; gap: var(--space-5); align-items: start; }
+
+/* FAQ: side tabs (GOBE) + accordion */
+.rw-faq-layout { display: grid; grid-template-columns: 260px 1fr; gap: var(--space-5); align-items: start; }
+.rw-tabs { list-style: none; margin: 0; padding: 0; }
+.rw-tabs a { display: block; padding: 11px 16px; font-size: 12px; font-weight: 600; letter-spacing: .24em; text-transform: uppercase; color: var(--ink); text-decoration: none; }
+.rw-tabs a[aria-current="true"] { background: var(--surface-tint); }
+.rw-faq { border-top: 1px solid var(--line); }
+.rw-faq details { border-bottom: 1px solid var(--line); }
+.rw-faq summary { list-style: none; display: grid; grid-template-columns: 56px 1fr auto; align-items: baseline; gap: 8px; padding: 24px 4px; cursor: pointer; }
+.rw-faq summary::-webkit-details-marker { display: none; }
+.rw-faq summary .rw-h3 { font-weight: 400; }
+.rw-faq summary::after { content: "+"; font-family: var(--font-display); font-size: 30px; line-height: 1; color: var(--ink); transition: transform .2s; }
+.rw-faq details[open] summary::after { transform: rotate(45deg); }
+.rw-faq .rw-answer { padding: 0 4px 26px 64px; max-width: calc(var(--text-max) + 64px); }
+.rw-faq .rw-answer p:first-child { margin-top: 0; }
+
+/* Accent band */
+.rw-scribble { display: inline-block; position: relative; }
+.rw-scribble::after { content: ""; position: absolute; left: -4%; right: -4%; bottom: -10px; height: 16px; background: none center / 100% 100% no-repeat; }
+
+/* Form: underline fields (GOBE subscribe) */
+.rw-form { display: grid; grid-template-columns: 1fr 1fr; gap: 34px var(--space-4); }
+.rw-field { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.rw-field.full { grid-column: 1 / -1; }
+.rw-field > label, .rw-field legend { font-size: 12px; font-weight: 600; letter-spacing: .24em; text-transform: uppercase; color: var(--ink); padding: 0; }
+.rw-help { font-size: 14px; color: var(--ink-muted); letter-spacing: 0; text-transform: none; font-weight: 400; }
+.rw-field input, .rw-field select, .rw-field textarea { font: inherit; font-size: 18px; color: var(--ink); background: transparent; border: 0; border-bottom: 1px solid var(--line-strong); border-radius: 0; padding: 8px 2px 10px; }
+.rw-field textarea { min-height: 110px; resize: vertical; border: 1px solid var(--line-strong); padding: 12px; }
+fieldset.rw-field { border: 0; padding: 0; margin: 0; }
+.rw-options { display: flex; gap: var(--space-4); padding-top: 8px; }
+.rw-options label { display: flex; align-items: center; gap: 10px; font-size: 18px; }
+.rw-options input { accent-color: var(--brand-forest); width: 17px; height: 17px; }
+
+/* Footer (GOBE) */
+.rw-footer { background-color: var(--surface-footer); padding: var(--space-6) var(--space-5) var(--space-5); }
+.rw-footer-grid { max-width: var(--content-max); margin: 0 auto; display: grid; grid-template-columns: 1.1fr .8fr .8fr 1.4fr; gap: var(--space-4); align-items: start; }
+.rw-badge { width: 140px; height: 140px; display: block; }
+.rw-footer ul { list-style: none; padding: 0; margin: 0; }
+.rw-footer li { margin: 0 0 12px; }
+.rw-footer li a { font-size: 11px; font-weight: 600; letter-spacing: .24em; text-transform: uppercase; color: var(--ink); text-decoration: none; }
+.rw a.rw-footer-cta, .rw-footer-cta { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--ink); padding: 10px 0; margin-top: var(--space-3); color: var(--ink); text-decoration: none; font-size: 18px; }
+.rw-footer-legal { max-width: var(--content-max); margin: var(--space-5) auto 0; padding-top: var(--space-3); border-top: 1px solid var(--line-strong); display: flex; justify-content: space-between; gap: var(--space-3); flex-wrap: wrap; font-size: 14px; color: var(--ink-muted); }
+
+/* Mobile menu trigger (Squarespace shows its own burger; this mirrors it) */
+.rw-burger { display: none; background: none; border: 0; padding: 8px; cursor: pointer; color: var(--ink); }
+.rw-burger span { display: block; width: 24px; height: 1px; background: currentColor; margin: 6px 0; }
+
+/* ===== Landing page (from the client sketch) ===== */
+/* Arched header: links follow a curve around the centred logo, like the logo's wordmark */
+.rw-arc-header { position: relative; padding: 26px var(--space-5) 0; text-align: center; }
+.rw-arc { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 28px; max-width: 980px; margin: 0 auto; }
+.rw-arc .rw-nav { gap: 26px; }
+.rw-arc .rw-nav.left li:nth-child(1) { transform: translateY(30px) rotate(-9deg); }
+.rw-arc .rw-nav.left li:nth-child(2) { transform: translateY(13px) rotate(-6deg); }
+.rw-arc .rw-nav.left li:nth-child(3) { transform: translateY(2px) rotate(-3deg); }
+.rw-arc .rw-nav.right li:nth-child(1) { transform: translateY(2px) rotate(3deg); }
+.rw-arc .rw-nav.right li:nth-child(2) { transform: translateY(13px) rotate(6deg); }
+.rw-arc .rw-nav.right li:nth-child(3) { transform: translateY(30px) rotate(9deg); }
+.rw-arc img { height: 104px; width: auto; display: block; }
+.rw-arc-cta { margin-top: 14px; }
+.rw-arc-line { display: block; width: 100%; height: 56px; margin-top: 6px; }
+.rw-arc-line path { fill: none; stroke: var(--line-strong); stroke-width: 1; vector-effect: non-scaling-stroke; }
+.rw-arc-header .rw-burger { position: absolute; right: var(--space-3); top: 22px; }
+
+/* Hero: headline left with deco image tucked under, tall key visual right with stacked service tags */
+.rw-home-hero { display: grid; grid-template-columns: 1.15fr .85fr; gap: var(--space-5); align-items: start; }
+.rw-home-hero .rw-display { font-size: clamp(42px, 5.4vw, 68px); }
+.rw-deco { background: var(--brand-mist) center / cover no-repeat; position: relative; }
+.rw-deco-tag { position: absolute; left: 12px; top: 12px; font-size: 10px; font-weight: 600; letter-spacing: .24em; text-transform: uppercase; color: var(--brand-forest); background: var(--brand-paper); padding: 5px 8px; }
+.rw-hero-deco { aspect-ratio: 16 / 9; width: 82%; margin: 56px 0 calc(var(--space-6) * -1 + 24px) -24px; position: relative; z-index: 1; }
+.rw-key { position: relative; }
+.rw-key .rw-photo { aspect-ratio: 3 / 4; }
+.rw-key .rw-photo-tag { top: 14px; bottom: auto; }
+.rw-tags { position: relative; margin: -34px 0 0 -28px; display: flex; flex-direction: column; align-items: flex-start; gap: 0; }
+.rw-tag, .rw a.rw-tag { display: inline-flex; align-items: center; gap: 12px; background: var(--brand-paper); border: 1px solid var(--ink); padding: 13px 20px; font-size: 12px; font-weight: 600; letter-spacing: .22em; text-transform: uppercase; color: var(--ink); text-decoration: none; transition: background-color .2s; }
+.rw-tag:hover { background: var(--brand-meadow-soft); }
+.rw-tag + .rw-tag { margin: -1px 0 0 22px; }
+
+/* Life can bring: centred text, small deco image to the right */
+.rw-life { display: grid; grid-template-columns: 1fr minmax(160px, 220px); gap: var(--space-5); align-items: center; }
+.rw-life-copy { text-align: center; max-width: 640px; margin: 0 auto; }
+.rw-life .rw-deco { aspect-ratio: 1; }
+
+/* Root Within offers: big stacked name left, copy right */
+.rw-offers { display: grid; grid-template-columns: .8fr 1.2fr; gap: var(--space-5); align-items: start; }
+.rw-offers .rw-display { font-size: clamp(52px, 7vw, 92px); line-height: .95; }
+
+/* How Root Within can support you: scattered paper tags, icon pops up on hover */
+.rw-scatter { list-style: none; padding: 0; margin: 56px auto 0; max-width: 1040px; display: flex; flex-wrap: wrap; justify-content: center; gap: 30px 26px; }
+.rw-scatter li { position: relative; }
+.rw-scatter li:nth-child(4n+1) { transform: rotate(-2.5deg) translateY(6px); }
+.rw-scatter li:nth-child(4n+2) { transform: rotate(1.8deg) translateY(-8px); }
+.rw-scatter li:nth-child(4n+3) { transform: rotate(-1deg) translateY(10px); }
+.rw-scatter li:nth-child(4n) { transform: rotate(2.6deg); }
+.rw-scatter .rw-tag { padding: 14px 20px; cursor: default; }
+.rw-scatter .rw-pop { position: absolute; left: 50%; bottom: calc(100% + 6px); width: 112px; height: 112px; transform: translate(-50%, 12px) scale(.85); opacity: 0; transition: opacity .25s, transform .25s; pointer-events: none; z-index: 3; }
+.rw-scatter li:hover .rw-pop, .rw-scatter li:focus-within .rw-pop { opacity: 1; transform: translate(-50%, 0) scale(1); }
+.rw-scatter li:hover .rw-tag { background: var(--brand-meadow-soft); }
+
+/* Not sure where to begin: booking left, meet your counsellor right */
+.rw-begin { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-6); align-items: start; margin-top: 56px; }
+.rw-arch-photo { aspect-ratio: 4 / 3.6; border-radius: 999px 999px 0 0; background: var(--brand-mist) center / cover no-repeat; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
+.rw-arch-photo img { width: 22%; }
+.rw-steps-list { list-style: none; padding: 0; margin: var(--space-3) 0 0; border-top: 1px solid var(--line); }
+.rw-steps-list li { display: grid; grid-template-columns: 48px 1fr; gap: 8px; padding: 16px 0; border-bottom: 1px solid var(--line); }
+
+/* Simple footer from the sketch: line, logo, contact */
+.rw-footer-simple { max-width: var(--content-max); margin: 0 auto; display: grid; grid-template-columns: 1fr auto 1fr; gap: var(--space-5); align-items: center; }
+.rw-footer-simple img { width: 132px; display: block; }
+.rw-contact-lines { display: grid; grid-template-columns: max-content 1fr; gap: 10px 18px; }
+.rw-contact-lines dt { font-size: 11px; font-weight: 600; letter-spacing: .24em; text-transform: uppercase; padding-top: 4px; }
+.rw-contact-lines dd { margin: 0; padding-bottom: 6px; border-bottom: 1px solid var(--line-strong); }
+.rw-contact-lines a { color: var(--ink); text-decoration: none; }
+
+/* ===== Responsive =====
+   Desktop > 1024px, tablet 768–1024px, mobile < 768px. Squarespace: check each section's
+   mobile layout in Fluid Engine (the phone icon in the editor) after building desktop. */
+@media (max-width: 1024px) {
+  .rw-section { padding: 96px 48px; }
+  .rw-header { padding: 18px 40px; gap: 24px; }
+  .rw-nav { gap: 20px; }
+  .rw-icons { grid-template-columns: repeat(2, 1fr); }
+  .rw-profile { grid-template-columns: 1fr 1fr; }
+  .rw-profile .rw-facts { grid-column: 1 / -1; order: 3; display: grid; grid-template-columns: repeat(3, 1fr); gap: 0 24px; }
+  .rw-faq-layout { grid-template-columns: 200px 1fr; gap: 40px; }
+  .rw-footer-grid { grid-template-columns: 1fr 1fr; }
+  .rw-split { gap: 48px; }
+  .rw-arc { gap: 18px; } .rw-arc .rw-nav { gap: 16px; } .rw-arc img { height: 88px; }
+  .rw-arc .rw-nav a { letter-spacing: .18em; }
+  .rw-home-hero, .rw-offers { gap: 48px; }
+  .rw-begin { gap: 64px; }
+  .rw-note { display: none; }
+}
+@media (max-width: 767px) {
+  .rw { font-size: 17px; }
+  .rw-section { padding: var(--space-5) var(--space-3); }
+  .rw-display { font-size: 42px; } .rw-h1 { font-size: 36px; } .rw-h2 { font-size: 30px; } .rw-h3 { font-size: 23px; } .rw-quote { font-size: 24px; } .rw-caps { font-size: 17px; letter-spacing: .18em; }
+  .rw-lead { font-size: 19px; }
+  .rw-topbar { font-size: 10px; letter-spacing: .16em; }
+  .rw-header { grid-template-columns: 1fr auto 1fr; padding: 12px var(--space-3); }
+  .rw-header img { height: 64px; grid-column: 2; }
+  .rw-header .rw-burger { display: block; grid-column: 3; justify-self: end; }
+  .rw-nav { display: none; }
+  .rw-icons, .rw-steps, .rw-split, .rw-profile, .rw-faq-layout, .rw-form, .rw-footer-grid { grid-template-columns: 1fr; }
+  .rw-icons { gap: 32px; margin-top: 36px; }
+  .rw-icon-card { display: grid; grid-template-columns: 72px 1fr; column-gap: 16px; align-items: start; }
+  .rw-icon-card img { width: 72px; height: 72px; margin: 0; grid-row: span 3; }
+  .rw-icon-card .rw-h3 { font-size: 21px; }
+  .rw-icon-card p { margin-top: 4px; }
+  .rw-profile .rw-facts { grid-template-columns: 1fr; }
+  .rw-steps > div { text-align: left !important; }
+  .rw-row { grid-template-columns: 1fr 1fr 1fr; }
+  .rw-row > :first-child { grid-column: 1 / -1; padding-bottom: 8px; }
+  .rw-row > :nth-child(2) { border-left: 0; }
+  .rw-row > * { padding: 16px 10px; }
+  .rw-tabs { display: flex; overflow-x: auto; gap: 4px; -webkit-overflow-scrolling: touch; }
+  .rw-tabs a { white-space: nowrap; }
+  .rw-faq summary { grid-template-columns: 40px 1fr auto; }
+  .rw-faq .rw-answer { padding-left: 48px; }
+  .rw-footer { padding: var(--space-5) var(--space-3) var(--space-3); }
+  .rw-footer-legal { flex-direction: column; }
+  .rw-btn { white-space: normal; text-align: center; justify-content: center; }
+  /* landing page */
+  .rw-arc-header { padding: 14px var(--space-3) 0; }
+  .rw-arc { grid-template-columns: 1fr; }
+  .rw-arc .rw-nav { display: none; }
+  .rw-arc img { height: 72px; margin: 0 auto; }
+  .rw-arc-header .rw-burger { display: block; }
+  .rw-arc-line { height: 28px; }
+  .rw-home-hero, .rw-life, .rw-offers, .rw-begin, .rw-footer-simple { grid-template-columns: 1fr; gap: 40px; }
+  .rw-hero-deco { width: 100%; margin: 32px 0 0; }
+  .rw-tags { margin: -28px 0 0 12px; }
+  .rw-life .rw-deco { max-width: 180px; margin: 0 auto; }
+  .rw-scatter { gap: 14px 10px; margin-top: 36px; }
+  .rw-scatter li { transform: none !important; }
+  .rw-scatter .rw-tag { padding: 10px 14px 10px 8px; font-size: 11px; letter-spacing: .14em; }
+  .rw-scatter .rw-pop { position: static; opacity: 1; transform: none; width: 34px; height: 34px; order: -1; }
+  .rw-scatter li { display: flex; }
+  .rw-scatter .rw-tag { gap: 8px; }
+  .rw-footer-simple { text-align: center; }
+  .rw-footer-simple img { margin: 0 auto; }
+  .rw-contact-lines { text-align: left; }
+  .rw-key .rw-photo { aspect-ratio: 4 / 5; }
+}
