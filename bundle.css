@@ -1,7 +1,7 @@
 /* Root Within. Every class maps to a Squarespace section or block (see each
    component's README). Paste into Design > Custom CSS what settings can't reach. */
 
-.rw { --grain: url("assets/paper-grain.png"); background: var(--surface); color: var(--ink); font-family: var(--font-serif); font-size: 18px; line-height: 1.65; -webkit-font-smoothing: antialiased; }
+.rw { --grain: url("paper-grain.png"); background: var(--surface); color: var(--ink); font-family: var(--font-serif); font-size: 18px; line-height: 1.65; -webkit-font-smoothing: antialiased; }
 .rw *, .rw *::before, .rw *::after { box-sizing: border-box; }
 
 /* Paper grain: one transparent tile over every section colour.
