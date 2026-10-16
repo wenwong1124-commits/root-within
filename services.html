@@ -295,6 +295,8 @@ a:hover .rx-arrow,button:hover .rx-arrow{transform:translateX(4px)}
 .rx-hero-copy .rx-btns{justify-content:center}
 }
 @media (max-width:767px){.rx-hero-copy .rx-btns{align-self:stretch}}
+/* Phones: hide the hero Book button (booking stays in the menu and the service tabs) */
+@media (max-width:767px){.rp .rx-hero .rx-btns{display:none}}
 
 /* Next-service button at the end of each tab */
 .rx-next{display:flex;justify-content:center;margin-top:clamp(8px, 4px + 1.5vw, 24px)}
