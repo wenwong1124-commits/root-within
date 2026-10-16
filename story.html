@@ -146,6 +146,10 @@ body{margin:0;background:#ffffff}
 .rp-st-shapes li.is-tap{background:var(--rp-green-600);color:#fff}
 .rp-st-steps-row li.is-tap > span:last-child{color:var(--rp-green-600)}
 .rp-st-steps-row li.is-tap{translate:0 -4px}
+
+/* Hero banner: the grain layer and photo follow the rounded corners in every browser (Safari can ignore overflow clipping on moving or blended layers) */
+.rp .rp-hb{clip-path:inset(0 round clamp(24px, 14px + 2.4vw, 44px))}
+.rp .rp-hb::after,.rp .rp-hb-bg{border-radius:inherit}
 </style>
 </head>
 <body>

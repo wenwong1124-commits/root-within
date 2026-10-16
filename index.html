@@ -631,6 +631,10 @@ html{scroll-behavior:smooth}
 .rp .rp-steps li.is-tap{background:#fff;border-bottom-color:transparent;translate:0 -4px;box-shadow:0 18px 40px rgba(20,40,25,.08)}
 .rp .rp-steps li.is-tap > span:last-child{color:var(--rp-green-700)}
 .rp .rp-bento-stat.is-tap,.rp .rp-fact.is-tap,.rp .rp-card.is-tap{border-color:transparent !important}
+
+/* Hero banner: the grain layer and photo follow the rounded corners in every browser (Safari can ignore overflow clipping on moving or blended layers) */
+.rp .rp-hb{clip-path:inset(0 round clamp(24px, 14px + 2.4vw, 44px))}
+.rp .rp-hb::after,.rp .rp-hb-bg{border-radius:inherit}
 </style>
 </head>
 <body>
