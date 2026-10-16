@@ -11,7 +11,7 @@
   --rp-radius:var(--radius-card,20px);--rp-max:var(--content-max,1200px);
   --rp-gutter:clamp(20px, 11.39px + 2.391vw, 42px);
   --rp-ease:var(--ease-lift,cubic-bezier(.2,.7,.2,1));--rp-ease-reveal:var(--ease-reveal,cubic-bezier(.25,.6,.3,1));
-  --rp-grain:url("assets/film-grain.png");
+  --rp-grain:url("assets/film-grain.png?v=0e3eab12");
   background:var(--rp-white);color:var(--rp-ink);font-family:var(--rp-sans);font-size:clamp(16px, 15.22px + 0.217vw, 18px);line-height:1.65;font-weight:300;-webkit-font-smoothing:antialiased
 }
 .rp *{box-sizing:border-box}
