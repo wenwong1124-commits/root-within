@@ -1,11 +1,11 @@
 # Root Within
 
-Landing page preview for **Root Within**, a psychotherapy and counselling practice.
+Website for **Root Within**, a psychotherapy and counselling practice.
 
-Live page: https://wenwong1124-commits.github.io/root-within/
+Live site: https://wenwong1124-commits.github.io/root-within/
 
-- `index.html`: the page (static HTML, no build step)
+- `index.html` Home, `story.html` Story, `about.html` Meet the therapist, `services.html` Services, `faq.html` FAQ, `contact.html` Contact us
 - `bundle.css`: Root Within design system styles
-- `assets/`: logo, illustrations and the eleven support icons
+- `assets/`: logo, photos, leaf marks and grain texture
 
-Designed in Claude Design. The final site will be rebuilt in Squarespace.
+Static HTML, no build step. Exported from the Claude Design file.

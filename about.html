@@ -1,0 +1,539 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Root Within, about Karina</title>
+<link rel="icon" href="assets/leaf-ink.png">
+<link rel="stylesheet" href="bundle.css">
+<style>body{margin:0;background:#ffffff}</style>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&amp;family=Jost:wght@300;400;500;600&amp;display=swap">
+<style>
+body{margin:0;background:#ffffff}
+/* ===== About me page: built on the Root Within design system (ds/root-within/components/bundle.css); only page layout lives here ===== */
+.rp mark{background:none;color:var(--rp-green-600);font-weight:inherit}
+
+/* Intro: Karina's portrait beside her name, role and first words */
+.rp-ab-hero{padding:clamp(24px, 12px + 3vw, 56px) 0 clamp(8px, 2vw, 24px)}
+.rp-ab-hero-grid{display:grid;grid-template-columns:minmax(0, 1fr) minmax(0, 1.1fr);gap:clamp(32px, 12px + 5vw, 96px);align-items:center}
+.rp-ab-portrait{position:relative;overflow:hidden;border-radius:var(--rp-radius);aspect-ratio:4 / 5;background:var(--rp-green-100)}
+.rp-ab-portrait > img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 22%;transition:transform 1.2s cubic-bezier(.2,.7,.2,1)}
+.rp-ab-portrait:hover > img{transform:scale(1.05)}
+.rp-ab-hero-copy{display:flex;flex-direction:column;align-items:flex-start;gap:22px;max-width:540px}
+.rp-ab-name-block{display:flex;flex-direction:column;gap:12px}
+.rp .rp-ab-name{color:var(--rp-ink)}
+.rp-ab-post{font-family:var(--rp-sans);font-size:clamp(13px, 12.22px + 0.217vw, 15px);font-weight:600;letter-spacing:.14em;color:var(--rp-green-600);margin-left:10px;vertical-align:middle;white-space:nowrap}
+.rp .rp-ab-role{font-size:12px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--rp-muted)}
+.rp .rp-ab-hero-copy .rp-lead{color:var(--rp-ink)}
+.rp .rp-ab-hero-copy > p:not(.rp-label):not(.rp-lead){color:var(--rp-muted)}
+.rp-ab-hero-rule{width:56px;height:1px;background:var(--rp-green-500)}
+
+/* Focus: the statement with the ripple */
+.rp .rp-ab-focus .rp-statement-in > p:not(.rp-label):not(.rp-accent){font-size:clamp(16px, 15.22px + 0.217vw, 18px);color:var(--rp-muted);max-width:600px}
+.rp .rp-ab-focus h2{font-size:clamp(34px, 26.17px + 2.174vw, 54px);font-style:italic;color:var(--rp-green-700);line-height:1.1}
+.rp .rp-ab-focus .rp-ab-intro{color:var(--rp-ink)}
+
+/* Practice: what I support, where I've worked, my approach, beside the At a glance card */
+.rp-ab-body{background:var(--rp-green-50);padding:clamp(72px, 50px + 6vw, 120px) 0}
+.rp-ab-body-grid{display:grid;grid-template-columns:minmax(0, 1.55fr) minmax(0, 1fr);gap:clamp(32px, 16px + 4vw, 72px);align-items:start}
+.rp-ab-main{display:flex;flex-direction:column;gap:clamp(48px, 36px + 3vw, 72px)}
+.rp-ab-block{display:flex;flex-direction:column;gap:20px}
+.rp .rp-ab-block > p.rp-ab-intro{font-family:var(--rp-serif);font-size:clamp(24px, 21.65px + 0.652vw, 30px);font-weight:500;line-height:1.2;color:var(--rp-ink)}
+.rp-ab-tags{list-style:none;padding:0;display:flex;flex-wrap:wrap;gap:8px}
+.rp-ab-tags li{background:#fff;border:1px solid var(--rp-line);border-radius:999px;padding:9px 18px;font-size:15px;font-weight:400;line-height:1.3;color:var(--rp-ink);transition:background-color .25s ease,color .25s ease,border-color .25s ease}
+.rp-ab-tags li:hover{background:var(--rp-green-600);border-color:var(--rp-green-600);color:#fff}
+.rp-ab-settings{list-style:none;padding:0;display:grid;grid-template-columns:repeat(4, minmax(0, 1fr));gap:12px}
+.rp-ab-settings li{background:#fff;border:1px solid var(--rp-green-200);border-radius:var(--radius-inner,14px);padding:16px 18px 18px;display:flex;flex-direction:column;gap:8px;transition:background-color .35s ease,border-color .35s ease,translate .35s cubic-bezier(.2,.7,.2,1),box-shadow .35s ease}
+.rp-ab-settings li:hover{background:var(--rp-green-100);border-color:var(--rp-green-500);translate:0 -4px;box-shadow:0 18px 40px rgba(20,40,25,.08)}
+.rp-ab-settings .rp-num{color:var(--rp-green-600)}
+.rp-ab-settings li > span:last-child{font-family:var(--rp-serif);font-size:clamp(20px, 18.43px + 0.435vw, 24px);font-weight:500;line-height:1.2;color:var(--rp-ink)}
+.rp-ab-pillars{list-style:none;padding:0;border-top:1px solid var(--rp-line)}
+.rp-ab-pillars li{display:flex;align-items:center;gap:18px;padding:18px 14px;border-bottom:1px solid var(--rp-line);font-family:var(--rp-serif);font-size:clamp(22px, 19.65px + 0.652vw, 28px);font-style:italic;line-height:1.25;color:var(--rp-ink);transition:background-color .3s ease}
+.rp-ab-pillars li::before{content:"";flex:none;width:28px;height:1px;background:var(--rp-green-500)}
+.rp-ab-pillars li:hover{background:var(--rp-green-100)}
+.rp .rp-ab-block > p:not(.rp-label):not(.rp-ab-intro){color:var(--rp-muted)}
+
+/* At a glance card */
+.rp-ab-card{position:sticky;top:96px;background:#fff;border-radius:var(--rp-radius);padding:clamp(24px, 18px + 1.6vw, 36px);display:flex;flex-direction:column;gap:20px;box-shadow:0 14px 34px rgba(20,40,25,.06);transition:box-shadow .35s ease,translate .35s cubic-bezier(.2,.7,.2,1)}
+.rp-ab-card:hover{translate:0 -4px;box-shadow:0 18px 40px rgba(20,40,25,.10)}
+.rp-ab-facts{margin:0;border-top:1px solid var(--rp-line)}
+.rp-ab-facts > div{display:grid;grid-template-columns:112px minmax(0, 1fr);gap:12px;padding:16px 8px;border-bottom:1px solid var(--rp-line);transition:background-color .3s ease}
+.rp-ab-facts > div:hover{background:var(--rp-green-50)}
+.rp-ab-facts dt{font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--rp-green-600);padding-top:3px}
+.rp .rp-ab-facts dd{font-size:15px;line-height:1.5;color:var(--rp-ink)}
+.rp-ab-cred{display:block;color:var(--rp-muted)}
+.rp-ab-cred + .rp-ab-cred{margin-top:10px}
+.rp-ab-cred strong{display:block;font-family:var(--rp-serif);font-size:19px;font-weight:500;line-height:1.2;color:var(--rp-ink)}
+.rp-ab-chips{display:flex;flex-wrap:wrap;gap:6px}
+.rp-ab-chips span{background:var(--rp-green-100);border-radius:999px;padding:4px 12px;font-size:14px}
+.rp-ab-big{font-family:var(--rp-serif);font-size:26px;font-weight:500;line-height:1;color:var(--rp-green-900)}
+/* Fee: the price on its own line, large and green, in a soft panel, with what it covers beneath */
+.rp .rp-ab-fee{display:flex;flex-direction:column;gap:4px;background:var(--rp-green-100);border:1px solid var(--rp-green-200);border-radius:12px;padding:12px 16px 14px}
+.rp-ab-price{font-family:var(--rp-sans);font-size:32px;font-weight:500;line-height:1.1;letter-spacing:.01em;font-variant-numeric:lining-nums;color:var(--rp-green-700)}
+.rp-ab-fee-note{font-size:14px;font-weight:400;line-height:1.4;color:var(--rp-ink)}
+.rp-ab-appr{list-style:none;padding:0;display:flex;flex-direction:column;gap:9px}
+/* Approaches as a bulleted list that stands out from the other details: green dots, darker and slightly larger text */
+.rp .rp-ab-appr li{position:relative;padding-left:18px;font-size:16px;font-weight:400;line-height:1.35;color:var(--rp-ink)}
+.rp .rp-ab-appr li::before{content:"";position:absolute;left:0;top:.5em;width:7px;height:7px;border-radius:50%;background:var(--rp-green-600)}
+.rp-ab-card .rp-btn{width:100%}
+
+/* Closing panel */
+.rp-ab-close{padding:clamp(72px, 50px + 6vw, 128px) 0}
+.rp-ab-close-panel{background:var(--rp-green-100);border-radius:var(--rp-radius);padding:clamp(40px, 24px + 4.4vw, 88px) clamp(24px, 12px + 4vw, 72px);display:flex;flex-direction:column;align-items:center;text-align:center;gap:22px}
+.rp .rp-ab-close-panel > p:not(.rp-lead){font-size:clamp(16px, 15.22px + 0.217vw, 18px);color:var(--rp-muted)}
+.rp-ab-feel{list-style:none;padding:0;display:flex;flex-wrap:wrap;justify-content:center;gap:8px;max-width:760px}
+.rp-ab-feel li{background:#fff;border-radius:999px;padding:10px 20px;font-family:var(--rp-serif);font-size:clamp(18px, 17.22px + 0.217vw, 20px);font-style:italic;line-height:1.25;color:var(--rp-ink);transition:background-color .25s ease,color .25s ease}
+.rp-ab-feel li:hover{background:var(--rp-green-600);color:#fff}
+.rp .rp-ab-close-panel .rp-h2{max-width:720px}
+.rp .rp-ab-close-panel .rp-lead{max-width:640px;color:var(--rp-ink)}
+.rp-ab-ctas{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:24px;margin-top:6px}
+
+@media (max-width:1024px){
+.rp-ab-body-grid{grid-template-columns:minmax(0, 1fr)}
+.rp-ab-card{position:relative;top:auto}
+.rp-ab-settings{grid-template-columns:repeat(2, minmax(0, 1fr))}
+}
+@media (max-width:767px){
+.rp-ab-hero-grid{grid-template-columns:minmax(0, 1fr)}
+.rp-ab-portrait{aspect-ratio:4 / 4.4}
+.rp-ab-ctas{flex-direction:column;align-items:stretch;width:100%}
+.rp-ab-ctas .rp-btn{width:100%}
+.rp-ab-ctas .rp-link{align-self:center}
+.rp-ab-facts > div{grid-template-columns:minmax(0, 1fr);gap:6px}
+}
+@media (max-width:400px){.rp-ab-settings li{padding:14px 14px 16px}}
+
+/* Body text: one size on every page (Jost Light 18px on desktop, 16px on phones) */
+.rp .rp-lead,.rp .rp-st-grow-text,.rp .rp-therapist p:not(.rp-label){font-size:clamp(16px, 15.22px + 0.217vw, 18px) !important;line-height:1.65 !important}
+@media (min-width:768px){.rp .rp-bento-stat > p:not(.rp-bento-num),.rp .rp-bento-quote p{font-size:18px !important;line-height:1.6 !important}}
+
+/* "Meet the therapist" is longer, so the menu folds into the menu button a little earlier */
+@media (max-width:1220px){.rp .rp-pillnav{display:none}.rp .rp-burger{display:inline-flex}}
+
+/* Menu: the tab for the page you are on is green */
+.rp .rp-pillnav a[aria-current="page"],.rp .rp-pillnav a[aria-current="page"]:hover{color:var(--rp-green-600) !important;font-weight:600}
+
+/* The side menu is only for screens where the full menu bar does not fit */
+@media (min-width:1221px){.rp ul.rp-mmenu{display:none !important}}
+
+/* Price tag: the same design as on the Services page */
+.rp .rp-ab-fee{display:block;background:none;border:0;border-radius:0;padding:0}
+/* the card is narrow, so the Fees row puts its label above a full-width tag */
+.rp .rp-ab-facts > div.rp-ab-fee-row{grid-template-columns:minmax(0, 1fr);gap:10px}
+.rp .rp-ab-fee .rp-sv-fee{display:flex;width:100%;box-sizing:border-box}
+.rp-sv-fee{display:inline-flex;align-items:center;gap:18px;padding:14px 22px;border-radius:14px;background:var(--rp-green-100)}
+.rp-sv-fee-price{font-family:var(--rp-sans);font-size:32px;font-weight:500;line-height:1;color:var(--rp-green-700);font-variant-numeric:lining-nums}
+.rp-sv-fee-meta{display:flex;flex-direction:column;gap:3px;padding-left:18px;border-left:1px solid rgba(47,93,58,.25)}
+.rp-sv-fee-meta span{font-size:12px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--rp-green-900)}
+.rp-sv-fee-meta span + span{font-weight:400;color:var(--rp-muted)}
+
+/* No borders on text boxes: boxes are defined by their fill (and shadow) only */
+.rp .rp-ab-tags li,.rp .rp-ab-tags li:hover,.rp .rp-ab-settings li,.rp .rp-ab-settings li:hover{border-color:transparent !important}
+
+/* Tap = hover: on touch screens (and on click) non-button elements show their hover effect; tap again or elsewhere to clear */
+.rp-bento-stat.is-tap{background:var(--bento-stat-hover,#cce1bc);translate:0 -4px;box-shadow:var(--shadow-lift,0 18px 40px rgba(20,40,25,.08))}
+.rp-bento-photo.is-tap{translate:0 -4px;box-shadow:0 18px 40px rgba(20,40,25,.12)}
+.rp-bento-feature.is-tap{background:var(--bento-feature-hover,#b2cf9b)}
+.rp-bento-feature.is-tap .rp-bento-quote{background:#fff;translate:0 -4px}
+.rp-areas-list li.is-tap{background:var(--rp-green-100);border-bottom-color:var(--rp-green-200)}
+.rp-areas-list li.is-tap .rp-name{color:var(--rp-green-600)}
+.rp-fact.is-tap{background:#fff;border-color:var(--rp-green-500)}
+.rp-begin-media.is-tap > img{transform:scale(1.05)}
+.rp-therapist.is-tap{background:var(--rp-green-50)}
+.rp-ab-portrait.is-tap > img{transform:scale(1.05)}
+.rp-ab-tags li.is-tap{background:var(--rp-green-600);border-color:var(--rp-green-600);color:#fff}
+.rp-ab-settings li.is-tap{background:var(--rp-green-100);border-color:var(--rp-green-500);translate:0 -4px;box-shadow:0 18px 40px rgba(20,40,25,.08)}
+.rp-ab-pillars li.is-tap{background:var(--rp-green-100)}
+.rp-ab-card.is-tap{translate:0 -4px;box-shadow:0 18px 40px rgba(20,40,25,.10)}
+.rp-ab-facts > div.is-tap{background:var(--rp-green-50)}
+.rp-ab-feel li.is-tap{background:var(--rp-green-600);color:#fff}
+.rp .rp-ab-tags li.is-tap,.rp .rp-ab-settings li.is-tap{border-color:transparent !important}
+</style>
+</head>
+<body>
+<div class="rp">
+<div class="rp-progress" aria-hidden="true"></div>
+
+<header class="rp-sticky" aria-label="Site">
+<div class="rp-sticky-in rp-topbar-in">
+<a class="rp-logo rp-brand" href="index.html" aria-label="Root Within, home"><img src="assets/leaf-ink.png" alt="" width="330" height="550"><span class="rp-brand-text"><span class="rp-brand-name">Root Within</span><span class="rp-brand-sub">Psychotherapy &amp; Counselling</span></span></a>
+<div class="rp-topbar-end">
+<nav class="rp-pillnav" aria-label="Main">
+<ul>
+<li><a href="index.html">Home</a></li>
+<li><a href="story.html">Story</a></li>
+<li><a href="#" aria-current="page">Meet the therapist</a></li>
+<li><a href="services.html">Services</a></li>
+<li><a href="faq.html">FAQ</a></li>
+<li><a href="contact.html">Contact us</a></li>
+</ul>
+</nav>
+<a class="rp-btn rp-btn-cta" href="https://book.carepatron.com/Root-Within/Karina?p=IycEjDdITNqGgzR2wNuk-g&amp;s=QvtfvDXC&amp;step=service" target="_blank" rel="noopener">Book an appointment</a>
+<button class="rp-burger" aria-label="Open menu" data-dcb-aria-expanded="{{menuExpanded}}" data-dc-on-click="toggleMenu"><span></span><span></span><span></span></button>
+</div>
+</div>
+</header>
+
+<template data-dc-if="menuOpen">
+<ul class="rp-mmenu">
+<li><a href="index.html" data-dc-on-click="closeMenu">Home</a></li>
+<li><a href="story.html" data-dc-on-click="closeMenu">Story</a></li>
+<li><a href="#" aria-current="page" data-dc-on-click="closeMenu">Meet the therapist</a></li>
+<li><a href="services.html" data-dc-on-click="closeMenu">Services</a></li>
+<li><a href="faq.html" data-dc-on-click="closeMenu">FAQ</a></li>
+<li><a href="contact.html" data-dc-on-click="closeMenu">Contact us</a></li>
+<li><a class="rp-btn rp-btn-primary" href="https://book.carepatron.com/Root-Within/Karina?p=IycEjDdITNqGgzR2wNuk-g&amp;s=QvtfvDXC&amp;step=service" target="_blank" rel="noopener" data-dc-on-click="closeMenu">Book an appointment</a></li>
+</ul>
+</template>
+
+<header class="rp-topbar">
+<div class="rp-topbar-in">
+<a class="rp-logo rp-brand" href="index.html" aria-label="Root Within, home"><img src="assets/leaf-ink.png" alt="" width="330" height="550"><span class="rp-brand-text"><span class="rp-brand-name">Root Within</span><span class="rp-brand-sub">Psychotherapy &amp; Counselling</span></span></a>
+<div class="rp-topbar-end">
+<nav class="rp-pillnav" aria-label="Main">
+<ul>
+<li><a href="index.html">Home</a></li>
+<li><a href="story.html">Story</a></li>
+<li><a href="#" aria-current="page">Meet the therapist</a></li>
+<li><a href="services.html">Services</a></li>
+<li><a href="faq.html">FAQ</a></li>
+<li><a href="contact.html">Contact us</a></li>
+</ul>
+</nav>
+<a class="rp-btn rp-btn-cta" href="https://book.carepatron.com/Root-Within/Karina?p=IycEjDdITNqGgzR2wNuk-g&amp;s=QvtfvDXC&amp;step=service" target="_blank" rel="noopener">Book an appointment</a>
+<button class="rp-burger" aria-label="Open menu" data-dcb-aria-expanded="{{menuExpanded}}" data-dc-on-click="toggleMenu"><span></span><span></span><span></span></button>
+</div>
+</div>
+</header>
+
+<section class="rp-ab-hero">
+<div class="rp-wrap">
+<div class="rp-ab-hero-grid">
+<div class="rp-ab-portrait" style="background-color: #ffffff"><img src="assets/karina-portrait.jpg" alt="Karina Cheung, Registered Social Worker" width="1566" height="1600"></div>
+<div class="rp-ab-hero-copy">
+<p class="rp-label">Meet your therapist</p>
+<div class="rp-ab-name-block">
+<h1 class="rp-h1 rp-ab-name">Karina Cheung <span class="rp-ab-post">MSW, RSW</span></h1>
+<p class="rp-ab-role">Social Worker | Psychotherapist</p>
+</div>
+<div class="rp-ab-hero-rule" aria-hidden="true"></div>
+<p class="rp-lead">I am a Registered Social Worker who sees therapy as a <mark>safe space to reconnect with yourself</mark>.</p>
+<p>My work is grounded in the belief that each person's experiences are unique, and that meaningful change can begin when we have a <mark>compassionate space</mark> to explore what is happening within and around us.</p>
+</div>
+</div>
+</div>
+</section>
+
+<section class="rp-statement rp-ab-focus">
+<div class="rp-wrap">
+<div class="rp-statement-in">
+<p class="rp-lead rp-ab-intro">I have a particular interest in supporting individuals navigating</p>
+<h2>grief, loss, and bereavement</h2>
+<div class="rp-rule" aria-hidden="true"></div>
+<p>This interest is informed in part by my own experience of navigating grief in a <mark>cultural context</mark> where conversations about death and dying may be difficult.</p>
+</div>
+</div>
+</section>
+
+<section class="rp-ab-body">
+<div class="rp-wrap">
+<div class="rp-ab-body-grid">
+<div class="rp-ab-main">
+
+<div class="rp-ab-block">
+<p class="rp-ab-intro">I also support individuals experiencing</p>
+<ul class="rp-ab-tags">
+<li>anxiety</li>
+<li>depression</li>
+<li>stress and burnout</li>
+<li>emotional regulation difficulties</li>
+<li>communication and relationship challenges</li>
+<li>autism and ADHD</li>
+<li>life transitions</li>
+<li>caregiver burnout</li>
+</ul>
+</div>
+
+<div class="rp-ab-block">
+<p class="rp-ab-intro">My experience spans</p>
+<ol class="rp-ab-settings">
+<li><span class="rp-num">01</span><span>hospital</span></li>
+<li><span class="rp-num">02</span><span>hospice</span></li>
+<li><span class="rp-num">03</span><span>school</span></li>
+<li><span class="rp-num">04</span><span>community</span></li>
+</ol>
+</div>
+
+<div class="rp-ab-block">
+<p class="rp-label">My approach is</p>
+<ul class="rp-ab-pillars">
+<li>holistic</li>
+<li>person-centered</li>
+<li>empowering</li>
+</ul>
+<p>I strive to create a <mark>warm and welcoming environment</mark> where you can explore your emotions, thoughts, and lived experiences <mark>at your own pace</mark>. I tailor my approach to your unique needs, strengths, and circumstances, recognizing that there is <mark>no one-size-fits-all</mark> approach to therapy.</p>
+</div>
+
+</div>
+
+<aside class="rp-ab-card" aria-label="Practice details">
+<p class="rp-label">At a glance</p>
+<dl class="rp-ab-facts">
+<div><dt>Credentials</dt><dd><span class="rp-ab-cred"><strong>Master of Social Work</strong> University of Toronto</span><span class="rp-ab-cred"><strong>Bachelor of Honours in Psychology</strong> The Chinese University of Hong Kong</span></dd></div>
+<div><dt>Languages</dt><dd><span class="rp-ab-chips"><span>English</span><span>Cantonese</span><span>Mandarin</span></span></dd></div>
+<div><dt>Populations</dt><dd><span class="rp-ab-big">16+</span></dd></div>
+<div><dt>Approaches</dt><dd><ul class="rp-ab-appr"><li>Cognitive Behavioral Therapy</li><li>Dialectical Behavior Therapy</li><li>Acceptance and Commitment Therapy</li><li>Emotion-Focused Therapy</li><li>Narrative Therapy</li><li>Mindfulness practice</li></ul></dd></div>
+<div class="rp-ab-fee-row"><dt>Fees</dt><dd class="rp-ab-fee"><div class="rp-sv-fee" aria-label="Individual Psychotherapy: $170 for 50 minutes"><span class="rp-sv-fee-price">$170</span><span class="rp-sv-fee-meta"><span>50 mins</span><span>Individual Psychotherapy</span></span></div></dd></div>
+<div><dt>Format</dt><dd>Virtual</dd></div>
+</dl>
+<a class="rp-btn rp-btn-primary" href="https://book.carepatron.com/Root-Within/Karina?p=IycEjDdITNqGgzR2wNuk-g&amp;s=QvtfvDXC&amp;step=service" target="_blank" rel="noopener">Book an appointment</a>
+</aside>
+</div>
+</div>
+</section>
+
+<section class="rp-ab-close">
+<div class="rp-wrap">
+<div class="rp-ab-close-panel">
+<p>You may come to therapy feeling</p>
+<ul class="rp-ab-feel">
+<li>overwhelmed</li>
+<li>disconnected</li>
+<li>uncertain</li>
+<li>or simply knowing that something does not feel quite right</li>
+</ul>
+<p>You do not need to have everything figured out before reaching out.</p>
+<div class="rp-rule" aria-hidden="true"></div>
+<h2 class="rp-h2">Wherever you are, we can begin there.</h2>
+<p class="rp-lead">Together, we can create space to <mark>better understand</mark> what you are experiencing, <mark>make sense</mark> of what you are carrying, and <mark>explore what may help</mark>.</p>
+<div class="rp-ab-ctas"><a class="rp-btn rp-btn-primary" href="https://book.carepatron.com/Root-Within/Karina?p=IycEjDdITNqGgzR2wNuk-g&amp;s=QvtfvDXC&amp;step=service" target="_blank" rel="noopener">Book an appointment</a></div>
+</div>
+</div>
+</section>
+
+<footer class="rp-footer2">
+<div class="rp-wrap">
+<div class="rp-footer2-grid">
+<p class="rp-footer2-tag">Begin your healing journey at <br>Root Within.</p>
+<img class="rp-footer2-logo" src="assets/logo.png" alt="Root Within">
+<dl class="rp-footer2-contact">
+<dt>Email</dt><dd><a href="mailto:rootwithin.ca@gmail.com">rootwithin.ca@gmail.com</a></dd>
+<dt>Phone</dt><dd><a href="tel:+12898164602">(289) 816-4602</a></dd>
+<dt>IG</dt><dd><a href="#">@rootwithin.ca</a></dd>
+</dl>
+</div>
+</div>
+</footer>
+
+<a class="rp-top" href="#" aria-label="Back to top" data-dc-on-click="toTop"></a>
+</div>
+<script>
+(function () {
+  'use strict';
+  // Stand-in for the Claude Design runtime: fills {{holes}}, toggles <sc-if> blocks, wires event handlers.
+  var comp, vals = {};
+  function fill(tpl) {
+    return tpl.replace(/\{\{\s*([^}\s]+)\s*\}\}/g, function (m, k) {
+      var v = vals[k];
+      return v == null || v === false || typeof v === 'function' ? '' : String(v);
+    });
+  }
+  function render() {
+    vals = comp.renderVals() || {};
+    Array.prototype.forEach.call(document.querySelectorAll('template[data-dc-if]'), function (t) {
+      var on = !!vals[t.getAttribute('data-dc-if')];
+      if (on && !t._dcNodes) {
+        var frag = t.content.cloneNode(true);
+        t._dcNodes = Array.prototype.slice.call(frag.childNodes);
+        t.parentNode.insertBefore(frag, t.nextSibling);
+      } else if (!on && t._dcNodes) {
+        t._dcNodes.forEach(function (n) { if (n.parentNode) n.parentNode.removeChild(n); });
+        t._dcNodes = null;
+      }
+    });
+    Array.prototype.forEach.call(document.body.querySelectorAll('*'), function (el) {
+      for (var i = 0; i < el.attributes.length; i++) {
+        var a = el.attributes[i];
+        if (a.name.indexOf('data-dcb-') === 0) el.setAttribute(a.name.slice(9), fill(a.value));
+      }
+    });
+  }
+  window.DCLogic = function DCLogic(props) { this.props = props || {}; this.state = {}; };
+  window.DCLogic.prototype.setState = function (p) {
+    Object.assign(this.state, typeof p === 'function' ? p(this.state) : p);
+    render();
+  };
+  ['click', 'submit', 'input', 'change'].forEach(function (type) {
+    document.addEventListener(type, function (e) {
+      var el = e.target && e.target.closest ? e.target.closest('[data-dc-on-' + type + ']') : null;
+      if (!el) return;
+      var fn = vals[el.getAttribute('data-dc-on-' + type)];
+      if (typeof fn !== 'function') return;
+      fn({
+        type: type, target: e.target, currentTarget: el, nativeEvent: e,
+        preventDefault: function () { e.preventDefault(); },
+        stopPropagation: function () { e.stopPropagation(); }
+      });
+    });
+  });
+  window.__dcMount = function (Component) {
+    comp = new Component({});
+    render();
+    if (comp.componentDidMount) comp.componentDidMount();
+  };
+})();
+</script>
+<script>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { menuOpen: false };
+  }
+  componentDidMount() {
+    // close the side menu if the screen becomes wide enough for the full menu bar
+    this._rpWide = () => { if ((window.innerWidth || 0) > 1220 && this.state.menuOpen) this.setState({ menuOpen: false }); };
+    window.addEventListener('resize', this._rpWide);
+    // tap or click shows the same effect as hover (touch screens have no hover); tap again or elsewhere to clear
+    const tapSel = [".rp-bento-stat", ".rp-bento-photo", ".rp-bento-feature", ".rp-areas-list li", ".rp-fact", ".rp-begin-media", ".rp-therapist", ".rp-ab-portrait", ".rp-ab-tags li", ".rp-ab-settings li", ".rp-ab-pillars li", ".rp-ab-card", ".rp-ab-facts > div", ".rp-ab-feel li", ".rp .rp-ab-tags li", ".rp .rp-ab-settings li"];
+    this._rpTap = (e) => {
+      const rootEl = document.querySelector('.rp');
+      if (!rootEl || !e.target || !e.target.closest) return;
+      let t = null;
+      for (const s of tapSel) { const c = e.target.closest(s); if (c && rootEl.contains(c) && (!t || t.contains(c))) t = c; }
+      rootEl.querySelectorAll('.is-tap').forEach((el) => { if (el !== t) el.classList.remove('is-tap'); });
+      if (t) t.classList.toggle('is-tap');
+    };
+    document.addEventListener('click', this._rpTap);
+    const root = document.querySelector('.rp');
+    if (!root || !window.IntersectionObserver) return;
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    root.classList.add('rp-js');
+    const tag = (sel, cls, step, base) => {
+      root.querySelectorAll(sel).forEach((el, i) => {
+        if (el.closest('.rp-hero') || el.closest('.rp-topbar') || el.closest('.rp-sticky')) return;
+        el.classList.add('rv');
+        (cls || '').split(' ').filter(Boolean).forEach((c) => el.classList.add(c));
+        const d = (base || 0) + (step ? i * step : 0);
+        if (d) el.style.setProperty('--rv-d', d.toFixed(2) + 's');
+      });
+    };
+    tag('.rp-statement-in', 'rv-ripple');
+    tag('.rp-label, .rp-ab-role', 'rv-label');
+    tag('h1, h2, h3, .rp-footer2-tag, .rp-ab-intro', 'rv-mask', 0, 0.1);
+    tag('.rp-lead:not(.rp-ab-intro), .rp-ab-hero-copy > p:not(.rp-label):not(.rp-lead), .rp-statement p:not(.rp-label):not(.rp-accent):not(.rp-ab-intro), .rp-ab-block > p:not(.rp-label):not(.rp-ab-intro), .rp-ab-close-panel > p:not(.rp-lead)', '', 0, 0.2);
+    tag('.rp-rule, .rp-ab-hero-rule', 'rv-line', 0, 0.3);
+    tag('.rp-ab-portrait', 'rv-wipe', 0, 0.1);
+    tag('.rp-ab-tags li', '', 0.05, 0.2);
+    tag('.rp-ab-settings li', 'rv-scale', 0.1, 0.2);
+    tag('.rp-ab-pillars li', 'rv-left', 0.12, 0.2);
+    tag('.rp-ab-card', 'rv-right', 0, 0.2);
+    tag('.rp-ab-facts > div', '', 0.06, 0.35);
+    tag('.rp-ab-close-panel', 'rv-scale');
+    tag('.rp-ab-feel li', '', 0.08, 0.2);
+    tag('.rp-ab-ctas', '', 0, 0.45);
+    tag('.rp-footer2-grid > *', '', 0.12);
+    tag('.rp-footer2-contact', '', 0, 0.3);
+    // clipped or zero-width starting states hide an element from the observer, so watch an unclipped ancestor instead
+    const groups = new Map();
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        // replay every time: reveal when it scrolls in, reset once it has fully left the screen
+        if (e.isIntersecting && e.intersectionRatio >= 0.08) {
+          (groups.get(e.target) || []).forEach((el) => el.classList.add('rp-in'));
+        } else if (!e.isIntersecting) {
+          (groups.get(e.target) || []).forEach((el) => el.classList.remove('rp-in'));
+        }
+      });
+    }, { threshold: [0, 0.08], rootMargin: '0px 0px -6% 0px' });
+    root.querySelectorAll('.rv').forEach((el) => {
+      let t = el;
+      for (let a = el; a && a !== root; a = a.parentElement) {
+        if (a.classList.contains('rv-mask') || a.classList.contains('rv-wipe') || a.classList.contains('rv-line')) t = a.parentElement;
+      }
+      if (!groups.has(t)) { groups.set(t, []); io.observe(t); }
+      groups.get(t).push(el);
+    });
+    this._rpIO = io;
+    const bar = root.querySelector('.rp-progress');
+    const sticky = root.querySelector('.rp-sticky');
+    const toTop = root.querySelector('.rp-top');
+    const heroBg = root.querySelector('.rp-hb-bg');
+    const heroCopy = root.querySelector('.rp-hb-content');
+    const imgs = Array.from(root.querySelectorAll('.rp-ab-portrait > img'));
+    const bgs = Array.from(root.querySelectorAll('.rp-none'));
+    const secs = Array.from(root.querySelectorAll('.rp-ab-hero-copy, .rp-statement-in'));
+    let ticking = false;
+    const onScroll = () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        ticking = false;
+        const de = document.scrollingElement || document.documentElement;
+        const y = de.scrollTop || window.scrollY || 0;
+        const vh = window.innerHeight || 800;
+        const max = de.scrollHeight - vh;
+        if (bar) bar.style.transform = 'scaleX(' + (max > 0 ? Math.min(1, y / max) : 0) + ')';
+        if (sticky) sticky.classList.toggle('is-on', y > 600);
+        if (toTop) toTop.classList.toggle('is-on', y > 400);
+        if (heroBg) heroBg.style.translate = '0 ' + Math.round(y * 0.15) + 'px';
+        if (heroCopy) {
+          const p = Math.min(1, y / 650);
+          heroCopy.style.translate = '0 ' + Math.round(-50 * p) + 'px';
+          heroCopy.style.opacity = String(1 - 0.75 * p);
+        }
+        imgs.forEach((el) => {
+          const r = el.getBoundingClientRect();
+          const c = (r.top + r.height / 2 - vh / 2) / vh;
+          el.style.translate = '0 ' + Math.round(c * -48) + 'px';
+          el.style.scale = '1.12';
+        });
+        secs.forEach((el) => {
+          const r = el.getBoundingClientRect();
+          const c = (r.top + r.height / 2 - vh / 2) / vh;
+          el.style.translate = '0 ' + Math.round(Math.max(-1, Math.min(1, c)) * 26) + 'px';
+        });
+        bgs.forEach((el) => {
+          const r = el.getBoundingClientRect();
+          const c = (r.top + r.height / 2 - vh / 2) / vh;
+          el.style.backgroundPosition = '50% ' + Math.round(50 + c * 35) + '%';
+        });
+      });
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+    onScroll();
+    this._rpScroll = onScroll;
+  }
+  componentWillUnmount() {
+    if (this._rpWide) window.removeEventListener('resize', this._rpWide);
+    if (this._rpTap) document.removeEventListener('click', this._rpTap);
+    if (this._rpIO) this._rpIO.disconnect();
+    if (this._rpScroll) {
+      window.removeEventListener('scroll', this._rpScroll);
+      window.removeEventListener('resize', this._rpScroll);
+    }
+  }
+  renderVals() {
+    const open = !!this.state.menuOpen;
+    return {
+      closeMenu: () => this.setState({ menuOpen: false }),
+      menuOpen: open,
+      menuExpanded: open ? 'true' : 'false',
+      toggleMenu: () => this.setState({ menuOpen: !open }),
+      toTop: (e) => {
+        if (e && e.preventDefault) e.preventDefault();
+        const opts = { top: 0, behavior: 'smooth' };
+        window.scrollTo(opts);
+        document.scrollingElement && document.scrollingElement.scrollTo(opts);
+        let el = document.querySelector('.rp-top');
+        for (let p = el && el.parentElement; p; p = p.parentElement) {
+          if (p.scrollTop > 0) p.scrollTo(opts);
+        }
+      }
+    };
+  }
+}
+window.__dcMount(Component);
+</script>
+</body>
+</html>

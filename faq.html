@@ -1,0 +1,428 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Root Within, FAQ</title>
+<link rel="icon" href="assets/leaf-ink.png">
+<link rel="stylesheet" href="bundle.css">
+<style>body{margin:0;background:#ffffff}</style>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&amp;family=Jost:wght@300;400;500;600&amp;display=swap">
+<style>
+body{margin:0;background:#ffffff}
+/* ===== FAQ page: built on the Root Within design system (ds/root-within/components/bundle.css); only page layout lives here ===== */
+.rp mark{background:none;color:var(--rp-green-600);font-weight:inherit}
+
+/* Header: text on white */
+.rp-fq-head{padding:clamp(40px, 24px + 4vw, 96px) 0 clamp(32px, 20px + 3vw, 64px)}
+.rp-fq-head-in{display:flex;flex-direction:column;align-items:center;text-align:center;gap:18px}
+.rp .rp-fq-head .rp-h1{margin:0;color:var(--rp-ink)}
+
+/* Accordion: one question open at a time */
+.rp-fq{padding:0 0 clamp(72px, 50px + 6vw, 128px)}
+.rp-fq-list{max-width:920px;margin:0 auto;border-top:1px solid var(--rp-line, #e2e8de)}
+.rp-fq-item{border-bottom:1px solid var(--rp-line, #e2e8de);transition:background-color .3s ease}
+.rp-fq-item.is-open{background:var(--rp-green-50, #f6f9f4)}
+.rp button.rp-fq-q{appearance:none;-webkit-appearance:none;width:100%;display:flex;align-items:center;justify-content:space-between;gap:24px;margin:0;padding:26px clamp(8px, 2vw, 24px);background:none;border:0;cursor:pointer;text-align:left;font:inherit;color:var(--rp-ink)}
+.rp-fq-q-text{font-family:var(--rp-serif);font-size:clamp(21px, 18px + .9vw, 27px);font-weight:500;line-height:1.25;transition:color .25s ease}
+.rp button.rp-fq-q:hover .rp-fq-q-text,.rp-fq-item.is-open .rp-fq-q-text{color:var(--rp-green-700)}
+.rp-fq-icon{position:relative;flex:0 0 40px;width:40px;height:40px;border-radius:50%;border:1px solid var(--rp-green-200);background:#fff;transition:background-color .3s ease,border-color .3s ease,transform .45s cubic-bezier(.2,.7,.2,1)}
+.rp-fq-icon::before,.rp-fq-icon::after{content:"";position:absolute;left:50%;top:50%;width:14px;height:1.5px;background:var(--rp-green-700);transform:translate(-50%,-50%);transition:background-color .3s ease}
+.rp-fq-icon::after{transform:translate(-50%,-50%) rotate(90deg)}
+.rp button.rp-fq-q:hover .rp-fq-icon{border-color:var(--rp-green-500)}
+.rp-fq-item.is-open .rp-fq-icon{background:var(--rp-green-600);border-color:var(--rp-green-600);transform:rotate(45deg)}
+.rp-fq-item.is-open .rp-fq-icon::before,.rp-fq-item.is-open .rp-fq-icon::after{background:#fff}
+.rp-fq-a{display:grid;grid-template-rows:0fr;transition:grid-template-rows .45s cubic-bezier(.2,.7,.2,1)}
+.rp-fq-item.is-open .rp-fq-a{grid-template-rows:1fr}
+.rp-fq-a-in{overflow:hidden;min-height:0}
+.rp-fq-body{display:flex;flex-direction:column;gap:16px;padding:0 clamp(8px, 2vw, 24px) 30px;max-width:none;opacity:0;transform:translateY(-6px);transition:opacity .35s ease,transform .45s cubic-bezier(.2,.7,.2,1)}
+.rp-fq-item.is-open .rp-fq-body{opacity:1;transform:none;transition-delay:.08s}
+.rp .rp-fq-body p{margin:0;font-size:clamp(16px, 15.22px + 0.217vw, 18px);font-weight:300;line-height:1.65;color:var(--rp-ink)}
+.rp ul.rp-fq-lines{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
+.rp ul.rp-fq-lines li{position:relative;padding-left:22px;font-size:clamp(16px, 15.22px + 0.217vw, 18px);font-weight:300;line-height:1.55;color:var(--rp-ink)}
+.rp ul.rp-fq-lines li::before{content:"";position:absolute;left:2px;top:.62em;width:7px;height:7px;border-radius:50%;background:var(--rp-green-600)}
+.rp ul.rp-fq-lines a{color:var(--rp-green-700);font-weight:400;text-decoration:none;border-bottom:1px solid currentColor}
+
+/* Insurance: two draft versions, labelled until one is chosen */
+.rp-fq-draft{display:flex;flex-direction:column;gap:14px;padding:20px 22px;border:1px dashed var(--rp-green-500);background:#fff}
+.rp .rp-fq-draft-tag{margin:0;font-family:var(--rp-sans);font-size:11px !important;font-weight:600 !important;letter-spacing:.16em;text-transform:uppercase;color:var(--rp-green-600) !important}
+.rp .rp-fq-note{font-size:13px !important;font-style:italic;color:var(--rp-muted) !important}
+
+/* Closing panel */
+.rp-fq-close{padding:0 0 clamp(72px, 50px + 6vw, 128px)}
+.rp-fq-close-panel{background:var(--rp-green-100);border-radius:var(--rp-radius);padding:clamp(48px, 30px + 5vw, 96px) clamp(24px, 12px + 4vw, 72px);display:flex;flex-direction:column;align-items:center;text-align:center;gap:24px}
+.rp .rp-fq-close-panel .rp-h2{margin:0}
+.rp .rp-fq-close-panel p.rp-lead{margin:0;max-width:600px;color:var(--rp-ink)}
+.rp-fq-ctas{display:flex;flex-wrap:wrap;justify-content:center;gap:12px}
+@media (max-width:767px){
+.rp button.rp-fq-q{padding:22px 4px;gap:16px}
+.rp-fq-icon{flex-basis:36px;width:36px;height:36px}
+.rp-fq-body{padding:0 4px 24px}
+.rp-fq-draft{padding:16px}
+.rp-fq-ctas{flex-direction:column;align-self:stretch}
+.rp-fq-ctas .rp-btn{width:100%}
+}
+
+/* Body text: one size on every page (Jost Light 18px on desktop, 16px on phones) */
+.rp .rp-lead,.rp .rp-st-grow-text,.rp .rp-therapist p:not(.rp-label){font-size:clamp(16px, 15.22px + 0.217vw, 18px) !important;line-height:1.65 !important}
+
+/* "Meet the therapist" is longer, so the menu folds into the menu button a little earlier */
+@media (max-width:1220px){.rp .rp-pillnav{display:none}.rp .rp-burger{display:inline-flex}}
+
+/* Menu: the tab for the page you are on is green */
+.rp .rp-pillnav a[aria-current="page"],.rp .rp-pillnav a[aria-current="page"]:hover{color:var(--rp-green-600) !important;font-weight:600}
+
+/* The side menu is only for screens where the full menu bar does not fit */
+@media (min-width:1221px){.rp ul.rp-mmenu{display:none !important}}
+
+/* Tap = hover: on touch screens (and on click) non-button elements show their hover effect; tap again or elsewhere to clear */
+.rp-bento-stat.is-tap{background:var(--bento-stat-hover,#cce1bc);translate:0 -4px;box-shadow:var(--shadow-lift,0 18px 40px rgba(20,40,25,.08))}
+.rp-bento-photo.is-tap{translate:0 -4px;box-shadow:0 18px 40px rgba(20,40,25,.12)}
+.rp-bento-feature.is-tap{background:var(--bento-feature-hover,#b2cf9b)}
+.rp-bento-feature.is-tap .rp-bento-quote{background:#fff;translate:0 -4px}
+.rp-areas-list li.is-tap{background:var(--rp-green-100);border-bottom-color:var(--rp-green-200)}
+.rp-areas-list li.is-tap .rp-name{color:var(--rp-green-600)}
+.rp-fact.is-tap{background:#fff;border-color:var(--rp-green-500)}
+.rp-begin-media.is-tap > img{transform:scale(1.05)}
+.rp-therapist.is-tap{background:var(--rp-green-50)}
+</style>
+</head>
+<body>
+<div class="rp">
+<div class="rp-progress" aria-hidden="true"></div>
+
+<header class="rp-sticky" aria-label="Site">
+<div class="rp-sticky-in rp-topbar-in">
+<a class="rp-logo rp-brand" href="index.html" aria-label="Root Within, home"><img src="assets/leaf-ink.png" alt="" width="330" height="550"><span class="rp-brand-text"><span class="rp-brand-name">Root Within</span><span class="rp-brand-sub">Psychotherapy &amp; Counselling</span></span></a>
+<div class="rp-topbar-end">
+<nav class="rp-pillnav" aria-label="Main">
+<ul>
+<li><a href="index.html">Home</a></li>
+<li><a href="story.html">Story</a></li>
+<li><a href="about.html">Meet the therapist</a></li>
+<li><a href="services.html">Services</a></li>
+<li><a href="faq.html" aria-current="page">FAQ</a></li>
+<li><a href="contact.html">Contact us</a></li>
+</ul>
+</nav>
+<a class="rp-btn rp-btn-cta" href="https://book.carepatron.com/Root-Within/Karina?p=IycEjDdITNqGgzR2wNuk-g&amp;s=QvtfvDXC&amp;step=service" target="_blank" rel="noopener">Book an appointment</a>
+<button class="rp-burger" aria-label="Open menu" data-dcb-aria-expanded="{{menuExpanded}}" data-dc-on-click="toggleMenu"><span></span><span></span><span></span></button>
+</div>
+</div>
+</header>
+
+<template data-dc-if="menuOpen">
+<ul class="rp-mmenu">
+<li><a href="index.html" data-dc-on-click="closeMenu">Home</a></li>
+<li><a href="story.html" data-dc-on-click="closeMenu">Story</a></li>
+<li><a href="about.html" data-dc-on-click="closeMenu">Meet the therapist</a></li>
+<li><a href="services.html" data-dc-on-click="closeMenu">Services</a></li>
+<li><a href="faq.html" aria-current="page" data-dc-on-click="closeMenu">FAQ</a></li>
+<li><a href="contact.html" data-dc-on-click="closeMenu">Contact us</a></li>
+<li><a class="rp-btn rp-btn-primary" href="https://book.carepatron.com/Root-Within/Karina?p=IycEjDdITNqGgzR2wNuk-g&amp;s=QvtfvDXC&amp;step=service" target="_blank" rel="noopener" data-dc-on-click="closeMenu">Book an appointment</a></li>
+</ul>
+</template>
+
+<header class="rp-topbar">
+<div class="rp-topbar-in">
+<a class="rp-logo rp-brand" href="index.html" aria-label="Root Within, home"><img src="assets/leaf-ink.png" alt="" width="330" height="550"><span class="rp-brand-text"><span class="rp-brand-name">Root Within</span><span class="rp-brand-sub">Psychotherapy &amp; Counselling</span></span></a>
+<div class="rp-topbar-end">
+<nav class="rp-pillnav" aria-label="Main">
+<ul>
+<li><a href="index.html">Home</a></li>
+<li><a href="story.html">Story</a></li>
+<li><a href="about.html">Meet the therapist</a></li>
+<li><a href="services.html">Services</a></li>
+<li><a href="faq.html" aria-current="page">FAQ</a></li>
+<li><a href="contact.html">Contact us</a></li>
+</ul>
+</nav>
+<a class="rp-btn rp-btn-cta" href="https://book.carepatron.com/Root-Within/Karina?p=IycEjDdITNqGgzR2wNuk-g&amp;s=QvtfvDXC&amp;step=service" target="_blank" rel="noopener">Book an appointment</a>
+<button class="rp-burger" aria-label="Open menu" data-dcb-aria-expanded="{{menuExpanded}}" data-dc-on-click="toggleMenu"><span></span><span></span><span></span></button>
+</div>
+</div>
+</header>
+
+<section class="rp-fq-head">
+<div class="rp-wrap">
+<div class="rp-fq-head-in">
+<p class="rp-label">FAQ</p>
+<h1 class="rp-h1">Frequently asked questions</h1>
+<div class="rp-rule" aria-hidden="true"></div>
+</div>
+</div>
+</section>
+
+<section class="rp-fq">
+<div class="rp-wrap">
+<div class="rp-fq-list">
+<div data-dcb-class="rp-fq-item {{fqOn0}}">
+<h2 class="rp-fq-h"><button class="rp-fq-q" type="button" id="rp-fq-q0" aria-controls="rp-fq-a0" data-dcb-aria-expanded="{{fqEx0}}" data-dc-on-click="fqT0"><span class="rp-fq-q-text">Are your services covered by insurance?</span><span class="rp-fq-icon" aria-hidden="true"></span></button></h2>
+<div class="rp-fq-a" id="rp-fq-a0" role="region" aria-labelledby="rp-fq-q0"><div class="rp-fq-a-in"><div class="rp-fq-body"><p>Therapy provided by Registered Social Workers (RSWs) may be covered under your extended health benefits. A doctor’s referral is not required. We recommend contacting your insurance provider to confirm whether your plan covers social work services, the amount of coverage available, and any annual limits that may apply.</p><p>Direct billing is available for select insurance providers and plans through TELUS Health eClaims. If direct billing is not available under your plan, we can provide an official receipt after your appointment for you to submit to your insurance provider for reimbursement.</p><p>If you have any further questions, please feel free to reach out.</p></div></div></div>
+</div>
+<div data-dcb-class="rp-fq-item {{fqOn1}}">
+<h2 class="rp-fq-h"><button class="rp-fq-q" type="button" id="rp-fq-q1" aria-controls="rp-fq-a1" data-dcb-aria-expanded="{{fqEx1}}" data-dc-on-click="fqT1"><span class="rp-fq-q-text">Do you offer therapy virtually or in person?</span><span class="rp-fq-icon" aria-hidden="true"></span></button></h2>
+<div class="rp-fq-a" id="rp-fq-a1" role="region" aria-labelledby="rp-fq-q1"><div class="rp-fq-a-in"><div class="rp-fq-body"><p>Currently, sessions are offered virtually to individuals residing in Ontario. Sessions are conducted through a secure video platform, and you will receive a link to join your session.</p><p>A private space and a stable internet connection are required. Phone appointments are also available.</p></div></div></div>
+</div>
+<div data-dcb-class="rp-fq-item {{fqOn2}}">
+<h2 class="rp-fq-h"><button class="rp-fq-q" type="button" id="rp-fq-q2" aria-controls="rp-fq-a2" data-dcb-aria-expanded="{{fqEx2}}" data-dc-on-click="fqT2"><span class="rp-fq-q-text">What does the process look like for scheduling a session?</span><span class="rp-fq-icon" aria-hidden="true"></span></button></h2>
+<div class="rp-fq-a" id="rp-fq-a2" role="region" aria-labelledby="rp-fq-q2"><div class="rp-fq-a-in"><div class="rp-fq-body"><p>You can book a free 15-minute consultation or send a message with your questions or needs. If you decide to proceed, we can schedule sessions based on your availability.</p><p>Before your first session, you will receive an informed consent form to review. This gives you an opportunity to understand the therapy process and ask any questions you may have.</p></div></div></div>
+</div>
+<div data-dcb-class="rp-fq-item {{fqOn3}}">
+<h2 class="rp-fq-h"><button class="rp-fq-q" type="button" id="rp-fq-q3" aria-controls="rp-fq-a3" data-dcb-aria-expanded="{{fqEx3}}" data-dc-on-click="fqT3"><span class="rp-fq-q-text">What can I expect during the free 15-minute consultation?</span><span class="rp-fq-icon" aria-hidden="true"></span></button></h2>
+<div class="rp-fq-a" id="rp-fq-a3" role="region" aria-labelledby="rp-fq-q3"><div class="rp-fq-a-in"><div class="rp-fq-body"><p>The free 15-minute consultation is an opportunity for us to meet, briefly discuss what brings you to therapy and what you are hoping to address, and get a sense of whether we might be a good fit. I’ll share more about how I work and what you can expect from therapy, and you’ll have a chance to ask any questions you may have.</p></div></div></div>
+</div>
+<div data-dcb-class="rp-fq-item {{fqOn4}}">
+<h2 class="rp-fq-h"><button class="rp-fq-q" type="button" id="rp-fq-q4" aria-controls="rp-fq-a4" data-dcb-aria-expanded="{{fqEx4}}" data-dc-on-click="fqT4"><span class="rp-fq-q-text">What happens if I need to cancel or reschedule my appointment?</span><span class="rp-fq-icon" aria-hidden="true"></span></button></h2>
+<div class="rp-fq-a" id="rp-fq-a4" role="region" aria-labelledby="rp-fq-q4"><div class="rp-fq-a-in"><div class="rp-fq-body"><p>We kindly ask that you provide at least 24 hours’ notice if you need to cancel or reschedule your appointment. Cancellations made with less than 24 hours’ notice, as well as missed appointments or no-shows, will be charged the full session fee.</p></div></div></div>
+</div>
+<div data-dcb-class="rp-fq-item {{fqOn5}}">
+<h2 class="rp-fq-h"><button class="rp-fq-q" type="button" id="rp-fq-q5" aria-controls="rp-fq-a5" data-dcb-aria-expanded="{{fqEx5}}" data-dc-on-click="fqT5"><span class="rp-fq-q-text">What happens if I am late for my session?</span><span class="rp-fq-icon" aria-hidden="true"></span></button></h2>
+<div class="rp-fq-a" id="rp-fq-a5" role="region" aria-labelledby="rp-fq-q5"><div class="rp-fq-a-in"><div class="rp-fq-body"><p>Because each session is reserved for a specific time, the session will still end at the scheduled appointment time if you arrive late unless otherwise stated by the therapist.</p></div></div></div>
+</div>
+<div data-dcb-class="rp-fq-item {{fqOn6}}">
+<h2 class="rp-fq-h"><button class="rp-fq-q" type="button" id="rp-fq-q6" aria-controls="rp-fq-a6" data-dcb-aria-expanded="{{fqEx6}}" data-dc-on-click="fqT6"><span class="rp-fq-q-text">Does Root Within offer emergency or crisis services?</span><span class="rp-fq-icon" aria-hidden="true"></span></button></h2>
+<div class="rp-fq-a" id="rp-fq-a6" role="region" aria-labelledby="rp-fq-q6"><div class="rp-fq-a-in"><div class="rp-fq-body"><p>No, Root Within does not offer emergency or crisis services. If you are experiencing an emergency, please call 911 or go to the emergency department of the nearest hospital.</p><p>For 24/7 crisis support, you can call:</p><ul class="rp-fq-lines"><li>Suicide Crisis Helpline: <a href="tel:988">988</a></li><li>Toronto Distress Centres: <a href="tel:+14164084357">416-408-4357</a></li><li>Gerstein Centre: <a href="tel:+14169295200">416-929-5200</a></li></ul></div></div></div>
+</div>
+</div>
+</div>
+</section>
+
+<section class="rp-fq-close">
+<div class="rp-wrap">
+<div class="rp-fq-close-panel">
+<p class="rp-label">Get in touch</p>
+<h2 class="rp-h2">Still have questions?</h2>
+<div class="rp-rule" aria-hidden="true"></div>
+<p class="rp-lead">Get in touch with us if you have any questions or need to inquire about alternative booking times.</p>
+<div class="rp-fq-ctas"><a class="rp-btn rp-btn-primary" href="https://book.carepatron.com/Root-Within/Karina?p=IycEjDdITNqGgzR2wNuk-g&amp;s=QvtfvDXC&amp;step=service" target="_blank" rel="noopener">Book an appointment</a><a class="rp-btn rp-btn-outline" href="contact.html">Contact us</a></div>
+</div>
+</div>
+</section>
+
+<footer class="rp-footer2">
+<div class="rp-wrap">
+<div class="rp-footer2-grid">
+<p class="rp-footer2-tag">Begin your healing journey at <br>Root Within.</p>
+<img class="rp-footer2-logo" src="assets/logo.png" alt="Root Within">
+<dl class="rp-footer2-contact">
+<dt>Email</dt><dd><a href="mailto:rootwithin.ca@gmail.com">rootwithin.ca@gmail.com</a></dd>
+<dt>Phone</dt><dd><a href="tel:+12898164602">(289) 816-4602</a></dd>
+<dt>IG</dt><dd><a href="#">@rootwithin.ca</a></dd>
+</dl>
+</div>
+</div>
+</footer>
+
+<a class="rp-top" href="#" aria-label="Back to top" data-dc-on-click="toTop"></a>
+</div>
+<script>
+(function () {
+  'use strict';
+  // Stand-in for the Claude Design runtime: fills {{holes}}, toggles <sc-if> blocks, wires event handlers.
+  var comp, vals = {};
+  function fill(tpl) {
+    return tpl.replace(/\{\{\s*([^}\s]+)\s*\}\}/g, function (m, k) {
+      var v = vals[k];
+      return v == null || v === false || typeof v === 'function' ? '' : String(v);
+    });
+  }
+  function render() {
+    vals = comp.renderVals() || {};
+    Array.prototype.forEach.call(document.querySelectorAll('template[data-dc-if]'), function (t) {
+      var on = !!vals[t.getAttribute('data-dc-if')];
+      if (on && !t._dcNodes) {
+        var frag = t.content.cloneNode(true);
+        t._dcNodes = Array.prototype.slice.call(frag.childNodes);
+        t.parentNode.insertBefore(frag, t.nextSibling);
+      } else if (!on && t._dcNodes) {
+        t._dcNodes.forEach(function (n) { if (n.parentNode) n.parentNode.removeChild(n); });
+        t._dcNodes = null;
+      }
+    });
+    Array.prototype.forEach.call(document.body.querySelectorAll('*'), function (el) {
+      for (var i = 0; i < el.attributes.length; i++) {
+        var a = el.attributes[i];
+        if (a.name.indexOf('data-dcb-') === 0) el.setAttribute(a.name.slice(9), fill(a.value));
+      }
+    });
+  }
+  window.DCLogic = function DCLogic(props) { this.props = props || {}; this.state = {}; };
+  window.DCLogic.prototype.setState = function (p) {
+    Object.assign(this.state, typeof p === 'function' ? p(this.state) : p);
+    render();
+  };
+  ['click', 'submit', 'input', 'change'].forEach(function (type) {
+    document.addEventListener(type, function (e) {
+      var el = e.target && e.target.closest ? e.target.closest('[data-dc-on-' + type + ']') : null;
+      if (!el) return;
+      var fn = vals[el.getAttribute('data-dc-on-' + type)];
+      if (typeof fn !== 'function') return;
+      fn({
+        type: type, target: e.target, currentTarget: el, nativeEvent: e,
+        preventDefault: function () { e.preventDefault(); },
+        stopPropagation: function () { e.stopPropagation(); }
+      });
+    });
+  });
+  window.__dcMount = function (Component) {
+    comp = new Component({});
+    render();
+    if (comp.componentDidMount) comp.componentDidMount();
+  };
+})();
+</script>
+<script>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { menuOpen: false, openQ: 0 };
+  }
+  componentDidMount() {
+    // close the side menu if the screen becomes wide enough for the full menu bar
+    this._rpWide = () => { if ((window.innerWidth || 0) > 1220 && this.state.menuOpen) this.setState({ menuOpen: false }); };
+    window.addEventListener('resize', this._rpWide);
+    // tap or click shows the same effect as hover (touch screens have no hover); tap again or elsewhere to clear
+    const tapSel = [".rp-bento-stat", ".rp-bento-photo", ".rp-bento-feature", ".rp-areas-list li", ".rp-fact", ".rp-begin-media", ".rp-therapist"];
+    this._rpTap = (e) => {
+      const rootEl = document.querySelector('.rp');
+      if (!rootEl || !e.target || !e.target.closest) return;
+      let t = null;
+      for (const s of tapSel) { const c = e.target.closest(s); if (c && rootEl.contains(c) && (!t || t.contains(c))) t = c; }
+      rootEl.querySelectorAll('.is-tap').forEach((el) => { if (el !== t) el.classList.remove('is-tap'); });
+      if (t) t.classList.toggle('is-tap');
+    };
+    document.addEventListener('click', this._rpTap);
+    const root = document.querySelector('.rp');
+    if (!root || !window.IntersectionObserver) return;
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    root.classList.add('rp-js');
+    const tag = (sel, cls, step, base) => {
+      root.querySelectorAll(sel).forEach((el, i) => {
+        if (el.closest('.rp-hero') || el.closest('.rp-topbar') || el.closest('.rp-sticky')) return;
+        el.classList.add('rv');
+        (cls || '').split(' ').filter(Boolean).forEach((c) => el.classList.add(c));
+        const d = (base || 0) + (step ? i * step : 0);
+        if (d) el.style.setProperty('--rv-d', d.toFixed(2) + 's');
+      });
+    };
+    tag('.rp-label', 'rv-label');
+    tag('h1, .rp-fq-close-panel h2, .rp-footer2-tag', 'rv-mask', 0, 0.1);
+    tag('.rp-rule', 'rv-line', 0, 0.3);
+    tag('.rp-fq-item', '', 0.06, 0.1);
+    tag('.rp-fq-close-panel', 'rv-scale');
+    tag('.rp-fq-close-panel p.rp-lead, .rp-fq-ctas', '', 0.1, 0.35);
+    tag('.rp-footer2-grid > *', '', 0.12);
+    tag('.rp-footer2-contact', '', 0, 0.3);
+    // clipped or zero-width starting states hide an element from the observer, so watch an unclipped ancestor instead
+    const groups = new Map();
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        // replay every time: reveal when it scrolls in, reset once it has fully left the screen
+        if (e.isIntersecting && e.intersectionRatio >= 0.08) {
+          (groups.get(e.target) || []).forEach((el) => el.classList.add('rp-in'));
+        } else if (!e.isIntersecting) {
+          (groups.get(e.target) || []).forEach((el) => el.classList.remove('rp-in'));
+        }
+      });
+    }, { threshold: [0, 0.08], rootMargin: '0px 0px -6% 0px' });
+    root.querySelectorAll('.rv').forEach((el) => {
+      let t = el;
+      for (let a = el; a && a !== root; a = a.parentElement) {
+        if (a.classList.contains('rv-mask') || a.classList.contains('rv-wipe') || a.classList.contains('rv-line')) t = a.parentElement;
+      }
+      if (!groups.has(t)) { groups.set(t, []); io.observe(t); }
+      groups.get(t).push(el);
+    });
+    this._rpIO = io;
+    const bar = root.querySelector('.rp-progress');
+    const sticky = root.querySelector('.rp-sticky');
+    const toTop = root.querySelector('.rp-top');
+    const heroBg = root.querySelector('.rp-hb-bg');
+    const heroCopy = root.querySelector('.rp-hb-content');
+    const imgs = [];
+    const bgs = Array.from(root.querySelectorAll('.rp-none'));
+    const secs = [];
+    let ticking = false;
+    const onScroll = () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        ticking = false;
+        const de = document.scrollingElement || document.documentElement;
+        const y = de.scrollTop || window.scrollY || 0;
+        const vh = window.innerHeight || 800;
+        const max = de.scrollHeight - vh;
+        if (bar) bar.style.transform = 'scaleX(' + (max > 0 ? Math.min(1, y / max) : 0) + ')';
+        if (sticky) sticky.classList.toggle('is-on', y > 600);
+        if (toTop) toTop.classList.toggle('is-on', y > 400);
+        if (heroBg) heroBg.style.translate = '0 ' + Math.round(y * 0.15) + 'px';
+        if (heroCopy) {
+          const p = Math.min(1, y / 650);
+          heroCopy.style.translate = '0 ' + Math.round(-50 * p) + 'px';
+          heroCopy.style.opacity = String(1 - 0.75 * p);
+        }
+        imgs.forEach((el) => {
+          const r = el.getBoundingClientRect();
+          const c = (r.top + r.height / 2 - vh / 2) / vh;
+          el.style.translate = '0 ' + Math.round(c * -48) + 'px';
+          el.style.scale = '1.12';
+        });
+        secs.forEach((el) => {
+          const r = el.getBoundingClientRect();
+          const c = (r.top + r.height / 2 - vh / 2) / vh;
+          el.style.translate = '0 ' + Math.round(Math.max(-1, Math.min(1, c)) * 26) + 'px';
+        });
+        bgs.forEach((el) => {
+          const r = el.getBoundingClientRect();
+          const c = (r.top + r.height / 2 - vh / 2) / vh;
+          el.style.backgroundPosition = '50% ' + Math.round(50 + c * 35) + '%';
+        });
+      });
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+    onScroll();
+    this._rpScroll = onScroll;
+  }
+  componentWillUnmount() {
+    if (this._rpWide) window.removeEventListener('resize', this._rpWide);
+    if (this._rpTap) document.removeEventListener('click', this._rpTap);
+    if (this._rpIO) this._rpIO.disconnect();
+    if (this._rpScroll) {
+      window.removeEventListener('scroll', this._rpScroll);
+      window.removeEventListener('resize', this._rpScroll);
+    }
+  }
+  renderVals() {
+    const open = !!this.state.menuOpen;
+    const openQ = this.state.openQ;
+    const fq = {};
+    for (let i = 0; i < 7; i++) {
+      fq['fqOn' + i] = openQ === i ? 'is-open' : '';
+      fq['fqEx' + i] = openQ === i ? 'true' : 'false';
+      fq['fqT' + i] = () => this.setState({ openQ: this.state.openQ === i ? -1 : i });
+    }
+    return {
+      ...fq,
+      closeMenu: () => this.setState({ menuOpen: false }),
+      menuOpen: open,
+      menuExpanded: open ? 'true' : 'false',
+      toggleMenu: () => this.setState({ menuOpen: !open }),
+      toTop: (e) => {
+        if (e && e.preventDefault) e.preventDefault();
+        const opts = { top: 0, behavior: 'smooth' };
+        window.scrollTo(opts);
+        document.scrollingElement && document.scrollingElement.scrollTo(opts);
+        let el = document.querySelector('.rp-top');
+        for (let p = el && el.parentElement; p; p = p.parentElement) {
+          if (p.scrollTop > 0) p.scrollTo(opts);
+        }
+      }
+    };
+  }
+}
+window.__dcMount(Component);
+</script>
+</body>
+</html>

@@ -1,0 +1,529 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Root Within, our story</title>
+<link rel="icon" href="assets/leaf-ink.png">
+<link rel="stylesheet" href="bundle.css">
+<style>body{margin:0;background:#ffffff}</style>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&amp;family=Jost:wght@300;400;500;600&amp;display=swap">
+<style>
+body{margin:0;background:#ffffff}
+/* ===== Story page: built on the Root Within design system (ds/root-within/components/bundle.css); only page layout lives here ===== */
+
+/* Hero banner: the meadow photo with the title bottom-left (same photo treatment and load-in as the Home hero) */
+.rp .rp-st-hero .rp-hb{align-items:flex-end;justify-content:flex-start;min-height:clamp(480px, 74vh, 680px)}
+.rp .rp-st-hero .rp-hb-bg{object-position:50% 46%;filter:grayscale(.12) contrast(.98) brightness(.98)}
+.rp .rp-st-hero .rp-hb-shade{background:linear-gradient(200deg, rgba(18,32,22,0) 35%, rgba(18,32,22,.55) 100%)}
+.rp .rp-st-hero .rp-hb-content{align-items:flex-start;text-align:left;margin:0;max-width:820px;gap:18px;padding:0 clamp(24px, 4.4vw, 80px) calc(clamp(40px, 30px + 3vw, 72px) + var(--rp-st-lap))}
+.rp .rp-st-hero .rp-label{color:rgba(255,255,255,.92)}
+.rp .rp-st-hero .rp-hb-title{font-size:clamp(42px, 28.4px + 3.78vw, 76px);line-height:1.02;font-weight:400;letter-spacing:-.01em;text-shadow:0 2px 30px rgba(0,0,0,.35);max-width:none}
+.rp{--rp-st-lap:clamp(36px, 24px + 3vw, 64px)}
+@media (prefers-reduced-motion:no-preference){.rp .rp-st-hero .rp-hb-content > p{animation:rp-rise 1s cubic-bezier(.2,.7,.2,1) .6s both}}
+
+/* White panel rising over the bottom of the banner */
+.rp-st-panel-wrap{padding:0 clamp(12px, 1.6vw, 20px)}
+.rp-st-panel{position:relative;z-index:2;max-width:1600px;margin:calc(-1 * var(--rp-st-lap)) auto 0;background:#fff;border-radius:clamp(24px, 14px + 2.4vw, 44px) clamp(24px, 14px + 2.4vw, 44px) 0 0;padding:clamp(56px, 40px + 4vw, 104px) 0 clamp(72px, 50px + 6vw, 120px)}
+
+/* Disconnected: photo left, title and the three lines right */
+.rp-st-split{display:grid;grid-template-columns:minmax(0, 1fr) minmax(0, 1fr);gap:clamp(32px, 12px + 5vw, 96px);align-items:center}
+.rp-st-split-photo{position:relative;overflow:hidden;border-radius:var(--rp-radius);aspect-ratio:5 / 4;background:var(--rp-green-100)}
+.rp-st-split-photo > img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 60%;transition:transform 1.2s cubic-bezier(.2,.7,.2,1)}
+.rp-st-split-copy{display:flex;flex-direction:column;gap:28px}
+.rp-st-from{list-style:none;padding:0;border-top:1px solid var(--rp-line)}
+.rp-st-from li{display:flex;align-items:center;gap:18px;padding:20px 14px;border-bottom:1px solid var(--rp-line);font-family:var(--rp-serif);font-size:clamp(22px, 19.65px + 0.652vw, 28px);font-style:italic;line-height:1.25;color:var(--rp-ink);transition:background-color .3s ease}
+.rp-st-from li::before{content:"";flex:none;width:28px;height:1px;background:var(--rp-green-500)}
+.rp-st-from li:hover{background:var(--rp-green-100)}
+
+/* To Root Within: statement with the ripple, then the three things it makes space for, as a divided row */
+.rp-st-root-sec{background:var(--rp-green-50)}
+/* Only the rings behind the heading ripple here; the wide section ring that crossed the word row is off */
+.rp .rp-st-root-sec::before{content:none;animation:none}
+.rp .rp-st-root h2{max-width:820px}
+.rp-st-cont{display:block;margin-top:10px;font-size:clamp(18px, 15px + 0.9vw, 24px);line-height:1.45;color:var(--rp-muted)}
+.rp ol.rp-st-row{list-style:none;padding:0;margin:clamp(32px, 20px + 3vw, 56px) auto 0;display:grid;grid-template-columns:repeat(3, minmax(0, 1fr));max-width:1000px;position:relative;z-index:1}
+.rp-st-row li{display:flex;flex-direction:column;align-items:center;text-align:center;gap:8px;padding:8px 24px;border-left:1px solid var(--rp-green-200);transition:translate .35s cubic-bezier(.2,.7,.2,1)}
+.rp-st-row li:first-child{border-left:0}
+.rp-st-row li:hover{translate:0 -4px}
+.rp-st-row strong{font-family:var(--rp-serif);font-size:clamp(36px, 28.17px + 2.174vw, 56px);font-weight:500;font-style:italic;line-height:1;color:var(--rp-green-700);transition:color .25s ease}
+.rp-st-row li:hover strong{color:var(--rp-green-600)}
+.rp-st-row span{font-size:clamp(15px, 14.22px + 0.217vw, 17px);color:var(--rp-muted)}
+
+/* The meaning: text left, tall photo right, set lower (staggered) */
+.rp-st-meaning-sec{padding:clamp(72px, 50px + 6vw, 128px) 0}
+.rp-st-stagger{display:grid;grid-template-columns:minmax(0, 1fr) minmax(0, 1fr);gap:clamp(32px, 12px + 5vw, 96px);align-items:stretch}
+.rp-st-stagger-copy{display:flex;flex-direction:column;gap:22px}
+.rp .rp-st-stagger-copy > p:not(.rp-label){font-size:clamp(16px, 15.22px + 0.217vw, 18px);color:var(--rp-muted);max-width:480px}
+.rp-st-meaning-photo{border-radius:var(--rp-radius);min-height:320px;background-size:cover;background-position:50% 50%;background-repeat:no-repeat;transition:translate .35s cubic-bezier(.2,.7,.2,1),box-shadow .35s ease}
+.rp-st-meaning-photo:hover{translate:0 -4px;box-shadow:0 18px 40px rgba(20,40,25,.12)}
+.rp-st-shapes{margin:8px 0 0;background:var(--rp-green-100);border-radius:var(--rp-radius);padding:24px 28px 28px;display:flex;flex-direction:column;gap:16px;transition:background-color .35s ease}
+.rp-st-shapes:hover{background:var(--bento-stat,#d6e7c9)}
+.rp .rp-st-shapes figcaption{color:var(--rp-green-700)}
+.rp-st-shapes ul{list-style:none;padding:0;display:flex;flex-wrap:wrap;gap:8px}
+.rp-st-shapes li{background:#fff;border-radius:999px;padding:9px 18px;font-family:var(--rp-serif);font-size:19px;font-weight:500;line-height:1.2;color:var(--rp-ink);transition:background-color .25s ease,color .25s ease}
+.rp-st-shapes li:hover{background:var(--rp-green-600);color:#fff}
+
+/* Growth: title left, paragraph right, then the promise as a quote block */
+.rp-st-grow-sec{padding:0 0 clamp(72px, 50px + 6vw, 128px)}
+.rp-st-grow{display:grid;grid-template-columns:minmax(0, 1fr) minmax(0, 1fr);gap:clamp(32px, 12px + 5vw, 96px);align-items:start;padding-top:clamp(48px, 36px + 3vw, 72px);border-top:1px solid var(--rp-line)}
+.rp .rp-st-grow-text{font-family:var(--rp-sans);font-size:clamp(18px, 16.83px + 0.326vw, 21px);font-weight:300;line-height:1.65;color:var(--rp-ink)}
+.rp .rp-st-grow-text em{font-style:normal;font-weight:400;color:var(--rp-green-600)}
+.rp-st-grow-text em,.rp-st-quote em{font-style:italic;color:var(--rp-green-600)}
+.rp blockquote.rp-st-quote-block{margin:clamp(56px, 40px + 4vw, 104px) 0 0;max-width:none;width:100%;display:flex;flex-direction:column;gap:8px}
+.rp-st-quote-mark{font-family:var(--rp-serif);font-size:clamp(66px, 52.5px + 3.75vw, 105px);line-height:.7;height:.45em;color:var(--rp-green-600)}
+.rp .rp-st-quote{font-family:var(--rp-serif);font-size:clamp(28px, 21.74px + 1.739vw, 44px);font-weight:400;line-height:1.22;color:var(--rp-ink)}
+
+/* Closing panel: the first step, as a divided row, and the Book button */
+.rp-st-close{padding:0 0 clamp(72px, 50px + 6vw, 128px)}
+.rp-st-close-panel{background:var(--rp-green-100);border-radius:var(--rp-radius);padding:clamp(48px, 30px + 5vw, 96px) clamp(24px, 12px + 4vw, 72px);display:flex;flex-direction:column;align-items:center;text-align:center;gap:clamp(28px, 20px + 2vw, 44px)}
+.rp .rp-st-close-panel > p.rp-lead{color:var(--rp-ink)}
+.rp ol.rp-st-steps-row{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(3, minmax(0, 1fr));width:100%;max-width:1000px}
+.rp-st-steps-row li{display:flex;flex-direction:column;align-items:center;gap:10px;padding:6px 20px;border-left:1px solid var(--rp-green-200)}
+.rp-st-steps-row li:first-child{border-left:0}
+.rp-st-steps-row .rp-num{color:var(--rp-green-600)}
+.rp-st-steps-row li > span:last-child{font-family:var(--rp-serif);font-size:clamp(26px, 21.30px + 1.304vw, 38px);font-weight:500;line-height:1.1;color:var(--rp-ink);transition:color .25s ease}
+.rp-st-steps-row li:hover > span:last-child{color:var(--rp-green-600)}
+.rp-st-steps-row li > span:last-child{display:inline-block;transition:color .25s ease,transform .45s cubic-bezier(.2,.7,.2,1)}
+/* Same type and hover as "understand / acknowledge / reconnect": italic serif in deep green, lifting on hover */
+.rp-st-steps-row li > span:last-child{font-size:clamp(36px, 28.17px + 2.174vw, 56px);font-style:italic;line-height:1;color:var(--rp-green-700)}
+.rp-st-steps-row li{transition:translate .35s cubic-bezier(.2,.7,.2,1)}
+.rp-st-steps-row li:hover{translate:0 -4px}
+
+@media (max-width:1024px){
+.rp-st-stagger{grid-template-columns:minmax(0, 1fr)}
+.rp-st-meaning-photo{margin-top:0;min-height:0;aspect-ratio:4 / 5;width:100%;max-width:520px;justify-self:center}
+.rp-st-row strong,.rp-st-steps-row li > span:last-child{font-size:clamp(30px, 14px + 2.8vw, 40px)}
+.rp-st-row li,.rp-st-steps-row li{padding-left:8px;padding-right:8px}
+.rp-st-steps-row li > span:last-child{white-space:nowrap}
+}
+@media (max-width:767px){
+.rp-st-meaning-photo{aspect-ratio:4 / 3;max-width:none;background-position:50% 30% !important}
+.rp-st-split,.rp-st-grow{grid-template-columns:minmax(0, 1fr);gap:28px}
+.rp ol.rp-st-row,.rp ol.rp-st-steps-row{grid-template-columns:minmax(0, 1fr)}
+.rp-st-row li,.rp-st-steps-row li{border-left:0;border-top:1px solid var(--rp-green-200);padding:20px 8px}
+.rp-st-row li:first-child,.rp-st-steps-row li:first-child{border-top:0}
+.rp-st-close-panel .rp-btn{width:100%}
+.rp-st-shapes{padding:20px}
+.rp-st-shapes li{font-size:17px;padding:8px 14px}
+}
+@media (max-width:400px){.rp .rp-st-grow .rp-h2{font-size:26px}}
+
+/* Body text: one size on every page (Jost Light 18px on desktop, 16px on phones) */
+.rp .rp-lead,.rp .rp-st-grow-text,.rp .rp-therapist p:not(.rp-label){font-size:clamp(16px, 15.22px + 0.217vw, 18px) !important;line-height:1.65 !important}
+@media (min-width:768px){.rp .rp-bento-stat > p:not(.rp-bento-num),.rp .rp-bento-quote p{font-size:18px !important;line-height:1.6 !important}}
+
+/* "Meet the therapist" is longer, so the menu folds into the menu button a little earlier */
+@media (max-width:1220px){.rp .rp-pillnav{display:none}.rp .rp-burger{display:inline-flex}}
+
+/* Menu: the tab for the page you are on is green */
+.rp .rp-pillnav a[aria-current="page"],.rp .rp-pillnav a[aria-current="page"]:hover{color:var(--rp-green-600) !important;font-weight:600}
+
+/* The side menu is only for screens where the full menu bar does not fit */
+@media (min-width:1221px){.rp ul.rp-mmenu{display:none !important}}
+
+/* Quote block: the mark and the quote sit side by side, centred as a group on the page, text centred */
+.rp blockquote.rp-st-quote-block{flex-direction:row;align-items:center;justify-content:center;gap:clamp(12px, 8px + 1vw, 24px);padding:0;text-align:center}
+.rp blockquote.rp-st-quote-block .rp-st-quote{max-width:920px;margin:0}
+.rp blockquote.rp-st-quote-block .rp-st-quote-mark{flex:0 0 auto;align-self:center;height:auto;line-height:1;transform:translateY(.12em)}
+@media (max-width:767px){.rp blockquote.rp-st-quote-block{flex-direction:column;gap:4px}}
+
+/* Tap = hover: on touch screens (and on click) non-button elements show their hover effect; tap again or elsewhere to clear */
+.rp-bento-stat.is-tap{background:var(--bento-stat-hover,#cce1bc);translate:0 -4px;box-shadow:var(--shadow-lift,0 18px 40px rgba(20,40,25,.08))}
+.rp-bento-photo.is-tap{translate:0 -4px;box-shadow:0 18px 40px rgba(20,40,25,.12)}
+.rp-bento-feature.is-tap{background:var(--bento-feature-hover,#b2cf9b)}
+.rp-bento-feature.is-tap .rp-bento-quote{background:#fff;translate:0 -4px}
+.rp-areas-list li.is-tap{background:var(--rp-green-100);border-bottom-color:var(--rp-green-200)}
+.rp-areas-list li.is-tap .rp-name{color:var(--rp-green-600)}
+.rp-fact.is-tap{background:#fff;border-color:var(--rp-green-500)}
+.rp-begin-media.is-tap > img{transform:scale(1.05)}
+.rp-therapist.is-tap{background:var(--rp-green-50)}
+.rp-st-from li.is-tap{background:var(--rp-green-100)}
+.rp-st-row li.is-tap{translate:0 -4px}
+.rp-st-row li.is-tap strong{color:var(--rp-green-600)}
+.rp-st-meaning-photo.is-tap{translate:0 -4px;box-shadow:0 18px 40px rgba(20,40,25,.12)}
+.rp-st-shapes.is-tap{background:var(--bento-stat,#d6e7c9)}
+.rp-st-shapes li.is-tap{background:var(--rp-green-600);color:#fff}
+.rp-st-steps-row li.is-tap > span:last-child{color:var(--rp-green-600)}
+.rp-st-steps-row li.is-tap{translate:0 -4px}
+</style>
+</head>
+<body>
+<div class="rp">
+<div class="rp-progress" aria-hidden="true"></div>
+
+<header class="rp-sticky" aria-label="Site">
+<div class="rp-sticky-in rp-topbar-in">
+<a class="rp-logo rp-brand" href="index.html" aria-label="Root Within, home"><img src="assets/leaf-ink.png" alt="" width="330" height="550"><span class="rp-brand-text"><span class="rp-brand-name">Root Within</span><span class="rp-brand-sub">Psychotherapy &amp; Counselling</span></span></a>
+<div class="rp-topbar-end">
+<nav class="rp-pillnav" aria-label="Main">
+<ul>
+<li><a href="index.html">Home</a></li>
+<li><a href="#" aria-current="page">Story</a></li>
+<li><a href="about.html">Meet the therapist</a></li>
+<li><a href="services.html">Services</a></li>
+<li><a href="faq.html">FAQ</a></li>
+<li><a href="contact.html">Contact us</a></li>
+</ul>
+</nav>
+<a class="rp-btn rp-btn-cta" href="https://book.carepatron.com/Root-Within/Karina?p=IycEjDdITNqGgzR2wNuk-g&amp;s=QvtfvDXC&amp;step=service" target="_blank" rel="noopener">Book an appointment</a>
+<button class="rp-burger" aria-label="Open menu" data-dcb-aria-expanded="{{menuExpanded}}" data-dc-on-click="toggleMenu"><span></span><span></span><span></span></button>
+</div>
+</div>
+</header>
+
+<template data-dc-if="menuOpen">
+<ul class="rp-mmenu">
+<li><a href="index.html" data-dc-on-click="closeMenu">Home</a></li>
+<li><a href="#" aria-current="page" data-dc-on-click="closeMenu">Story</a></li>
+<li><a href="about.html" data-dc-on-click="closeMenu">Meet the therapist</a></li>
+<li><a href="services.html" data-dc-on-click="closeMenu">Services</a></li>
+<li><a href="faq.html" data-dc-on-click="closeMenu">FAQ</a></li>
+<li><a href="contact.html" data-dc-on-click="closeMenu">Contact us</a></li>
+<li><a class="rp-btn rp-btn-primary" href="https://book.carepatron.com/Root-Within/Karina?p=IycEjDdITNqGgzR2wNuk-g&amp;s=QvtfvDXC&amp;step=service" target="_blank" rel="noopener" data-dc-on-click="closeMenu">Book an appointment</a></li>
+</ul>
+</template>
+
+<header class="rp-topbar">
+<div class="rp-topbar-in">
+<a class="rp-logo rp-brand" href="index.html" aria-label="Root Within, home"><img src="assets/leaf-ink.png" alt="" width="330" height="550"><span class="rp-brand-text"><span class="rp-brand-name">Root Within</span><span class="rp-brand-sub">Psychotherapy &amp; Counselling</span></span></a>
+<div class="rp-topbar-end">
+<nav class="rp-pillnav" aria-label="Main">
+<ul>
+<li><a href="index.html">Home</a></li>
+<li><a href="#" aria-current="page">Story</a></li>
+<li><a href="about.html">Meet the therapist</a></li>
+<li><a href="services.html">Services</a></li>
+<li><a href="faq.html">FAQ</a></li>
+<li><a href="contact.html">Contact us</a></li>
+</ul>
+</nav>
+<a class="rp-btn rp-btn-cta" href="https://book.carepatron.com/Root-Within/Karina?p=IycEjDdITNqGgzR2wNuk-g&amp;s=QvtfvDXC&amp;step=service" target="_blank" rel="noopener">Book an appointment</a>
+<button class="rp-burger" aria-label="Open menu" data-dcb-aria-expanded="{{menuExpanded}}" data-dc-on-click="toggleMenu"><span></span><span></span><span></span></button>
+</div>
+</div>
+</header>
+
+<section class="rp-hero rp-st-hero">
+<div class="rp-hb">
+<img class="rp-hb-bg" src="assets/story-meadow.webp" alt="A sunlit meadow at the edge of a forest" width="1024" height="1536">
+<div class="rp-hb-shade" aria-hidden="true"></div>
+<div class="rp-hb-content">
+<p class="rp-label">About Root Within</p>
+<h1 class="rp-hb-title">An inner place <br>we can return to</h1>
+</div>
+</div>
+</section>
+
+<div class="rp-st-panel-wrap">
+<section class="rp-st-panel">
+<div class="rp-wrap">
+<div class="rp-st-split">
+<div class="rp-st-split-photo"><img src="assets/story-park-bench.webp" alt="A quiet park bench under the trees" width="2560" height="1920" style="opacity: 0.9; object-fit: cover"></div>
+<div class="rp-st-split-copy">
+<h2 class="rp-h2">Life can sometimes leave us feeling disconnected</h2>
+<ul class="rp-st-from">
+<li>from ourselves</li>
+<li>from others</li>
+<li>from a sense of direction</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+</div>
+
+<section class="rp-statement rp-st-root-sec">
+<div class="rp-wrap">
+<div class="rp-statement-in rp-st-root">
+<h2>To Root Within is to gently turn inward, <span class="rp-st-cont">to pause and listen to what is happening beneath the surface.</span></h2>
+<div class="rp-rule" aria-hidden="true"></div>
+<p class="rp-accent">It is about creating space to…</p>
+</div>
+<ol class="rp-st-row">
+<li><strong>understand</strong><span>ourselves</span></li>
+<li><strong>acknowledge</strong><span>what we are carrying</span></li>
+<li><strong>reconnect</strong><span>with overlooked parts of ourselves</span></li>
+</ol>
+</div>
+</section>
+
+<section class="rp-st-meaning-sec">
+<div class="rp-wrap">
+<div class="rp-st-stagger">
+<div class="rp-st-stagger-copy">
+<p class="rp-label">The meaning behind Root Within</p>
+<h2 class="rp-h2">The imagery of roots reflects the quiet, often unseen work of growth</h2>
+<p>Roots provide grounding and nourishment, but they also grow in different directions and at their own pace.</p>
+<figure class="rp-st-shapes">
+<figcaption class="rp-label">What shapes our inner lives</figcaption>
+<ul>
+<li>experiences</li>
+<li>relationships</li>
+<li>losses</li>
+<li>values</li>
+<li>environments</li>
+</ul>
+</figure>
+</div>
+<div class="rp-st-meaning-photo" role="img" aria-label="Writing in a notebook" style="background-image: url('assets/bento-notebook.webp'); background: url(&quot;assets/story-texture.webp&quot;) 50% 0% / cover no-repeat"></div>
+</div>
+</div>
+</section>
+
+<section class="rp-st-grow-sec">
+<div class="rp-wrap">
+<div class="rp-st-grow" style="align-items: center">
+<h2 class="rp-h2">We believe that growth does not always mean moving forward quickly</h2>
+<p class="rp-st-grow-text">Sometimes, growth means <em>slowing down.</em> Sometimes, it means <em>making sense</em> of what has happened, <em>grieving</em> what has been lost, or simply learning to <em>sit with</em> what is present.</p>
+</div>
+<blockquote class="rp-st-quote-block" style="align-items: center">
+
+<p class="rp-st-quote" style="font-size: 28px; line-height: 1.65; font-weight: 400; letter-spacing: 0px; font-style: italic; font-family: &quot;Cormorant Garamond&quot;, &quot;Cormorant&quot;, Georgia, serif">Root Within was created as a space where you <em>do not have to rush</em> through difficult emotions or navigate them <em>alone</em>.</p>
+</blockquote>
+</div>
+</section>
+
+<section class="rp-st-close">
+<div class="rp-wrap">
+<div class="rp-st-close-panel">
+<p class="rp-lead">Sometimes, the first step is simply to</p>
+<ol class="rp-st-steps-row">
+<li><span class="rp-num">01</span><span>pause</span></li>
+<li><span class="rp-num">02</span><span>take a breath</span></li>
+<li><span class="rp-num">03</span><span>turn inward</span></li>
+</ol>
+<a class="rp-btn rp-btn-primary" href="https://book.carepatron.com/Root-Within/Karina?p=IycEjDdITNqGgzR2wNuk-g&amp;s=QvtfvDXC&amp;step=service" target="_blank" rel="noopener">Book an appointment</a>
+</div>
+</div>
+</section>
+
+<footer class="rp-footer2">
+<div class="rp-wrap">
+<div class="rp-footer2-grid">
+<p class="rp-footer2-tag">Begin your healing journey at <br>Root Within.</p>
+<img class="rp-footer2-logo" src="assets/logo.png" alt="Root Within">
+<dl class="rp-footer2-contact">
+<dt>Email</dt><dd><a href="mailto:rootwithin.ca@gmail.com">rootwithin.ca@gmail.com</a></dd>
+<dt>Phone</dt><dd><a href="tel:+12898164602">(289) 816-4602</a></dd>
+<dt>IG</dt><dd><a href="#">@rootwithin.ca</a></dd>
+</dl>
+</div>
+</div>
+</footer>
+
+<a class="rp-top" href="#" aria-label="Back to top" data-dc-on-click="toTop"></a>
+</div>
+<script>
+(function () {
+  'use strict';
+  // Stand-in for the Claude Design runtime: fills {{holes}}, toggles <sc-if> blocks, wires event handlers.
+  var comp, vals = {};
+  function fill(tpl) {
+    return tpl.replace(/\{\{\s*([^}\s]+)\s*\}\}/g, function (m, k) {
+      var v = vals[k];
+      return v == null || v === false || typeof v === 'function' ? '' : String(v);
+    });
+  }
+  function render() {
+    vals = comp.renderVals() || {};
+    Array.prototype.forEach.call(document.querySelectorAll('template[data-dc-if]'), function (t) {
+      var on = !!vals[t.getAttribute('data-dc-if')];
+      if (on && !t._dcNodes) {
+        var frag = t.content.cloneNode(true);
+        t._dcNodes = Array.prototype.slice.call(frag.childNodes);
+        t.parentNode.insertBefore(frag, t.nextSibling);
+      } else if (!on && t._dcNodes) {
+        t._dcNodes.forEach(function (n) { if (n.parentNode) n.parentNode.removeChild(n); });
+        t._dcNodes = null;
+      }
+    });
+    Array.prototype.forEach.call(document.body.querySelectorAll('*'), function (el) {
+      for (var i = 0; i < el.attributes.length; i++) {
+        var a = el.attributes[i];
+        if (a.name.indexOf('data-dcb-') === 0) el.setAttribute(a.name.slice(9), fill(a.value));
+      }
+    });
+  }
+  window.DCLogic = function DCLogic(props) { this.props = props || {}; this.state = {}; };
+  window.DCLogic.prototype.setState = function (p) {
+    Object.assign(this.state, typeof p === 'function' ? p(this.state) : p);
+    render();
+  };
+  ['click', 'submit', 'input', 'change'].forEach(function (type) {
+    document.addEventListener(type, function (e) {
+      var el = e.target && e.target.closest ? e.target.closest('[data-dc-on-' + type + ']') : null;
+      if (!el) return;
+      var fn = vals[el.getAttribute('data-dc-on-' + type)];
+      if (typeof fn !== 'function') return;
+      fn({
+        type: type, target: e.target, currentTarget: el, nativeEvent: e,
+        preventDefault: function () { e.preventDefault(); },
+        stopPropagation: function () { e.stopPropagation(); }
+      });
+    });
+  });
+  window.__dcMount = function (Component) {
+    comp = new Component({});
+    render();
+    if (comp.componentDidMount) comp.componentDidMount();
+  };
+})();
+</script>
+<script>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { menuOpen: false };
+  }
+  componentDidMount() {
+    // close the side menu if the screen becomes wide enough for the full menu bar
+    this._rpWide = () => { if ((window.innerWidth || 0) > 1220 && this.state.menuOpen) this.setState({ menuOpen: false }); };
+    window.addEventListener('resize', this._rpWide);
+    // tap or click shows the same effect as hover (touch screens have no hover); tap again or elsewhere to clear
+    const tapSel = [".rp-bento-stat", ".rp-bento-photo", ".rp-bento-feature", ".rp-areas-list li", ".rp-fact", ".rp-begin-media", ".rp-therapist", ".rp-st-from li", ".rp-st-row li", ".rp-st-meaning-photo", ".rp-st-shapes", ".rp-st-shapes li", ".rp-st-steps-row li"];
+    this._rpTap = (e) => {
+      const rootEl = document.querySelector('.rp');
+      if (!rootEl || !e.target || !e.target.closest) return;
+      let t = null;
+      for (const s of tapSel) { const c = e.target.closest(s); if (c && rootEl.contains(c) && (!t || t.contains(c))) t = c; }
+      rootEl.querySelectorAll('.is-tap').forEach((el) => { if (el !== t) el.classList.remove('is-tap'); });
+      if (t) t.classList.toggle('is-tap');
+    };
+    document.addEventListener('click', this._rpTap);
+    const root = document.querySelector('.rp');
+    if (!root || !window.IntersectionObserver) return;
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    root.classList.add('rp-js');
+    const tag = (sel, cls, step, base) => {
+      root.querySelectorAll(sel).forEach((el, i) => {
+        if (el.closest('.rp-hero') || el.closest('.rp-topbar') || el.closest('.rp-sticky')) return;
+        el.classList.add('rv');
+        (cls || '').split(' ').filter(Boolean).forEach((c) => el.classList.add(c));
+        const d = (base || 0) + (step ? i * step : 0);
+        if (d) el.style.setProperty('--rv-d', d.toFixed(2) + 's');
+      });
+    };
+    tag('.rp-statement-in', 'rv-ripple');
+    tag('.rp-label', 'rv-label');
+    tag('h2, h3, .rp-footer2-tag', 'rv-mask', 0, 0.1);
+    tag('.rp-accent, .rp-lead, .rp-st-stagger-copy > p:not(.rp-label)', '', 0, 0.2);
+    tag('.rp-rule', 'rv-line', 0, 0.3);
+    tag('.rp-st-split-photo', 'rv-wipe', 0, 0.1);
+    tag('.rp-st-from li', 'rv-left', 0.12, 0.25);
+    tag('.rp-st-row li', 'rv-scale', 0.14, 0.15);
+    tag('.rp-st-shapes', 'rv-scale', 0, 0.3);
+    tag('.rp-st-shapes li', '', 0.08, 0.4);
+    tag('.rp-st-meaning-photo', 'rv-wipe', 0, 0.25);
+    tag('.rp-st-grow-text', '', 0, 0.2);
+    tag('.rp-st-quote-mark', 'rv-scale', 0, 0.1);
+    tag('.rp-st-quote', 'rv-mask', 0, 0.2);
+    tag('.rp-st-close-panel', 'rv-scale');
+    tag('.rp-st-steps-row li', 'rv-scale', 0.15, 0.25);
+    tag('.rp-st-close-panel .rp-btn', '', 0, 0.6);
+    tag('.rp-footer2-grid > *', '', 0.12);
+    tag('.rp-footer2-contact', '', 0, 0.3);
+    // clipped or zero-width starting states hide an element from the observer, so watch an unclipped ancestor instead
+    const groups = new Map();
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        // replay every time: reveal when it scrolls in, reset once it has fully left the screen
+        if (e.isIntersecting && e.intersectionRatio >= 0.08) {
+          (groups.get(e.target) || []).forEach((el) => el.classList.add('rp-in'));
+        } else if (!e.isIntersecting) {
+          (groups.get(e.target) || []).forEach((el) => el.classList.remove('rp-in'));
+        }
+      });
+    }, { threshold: [0, 0.08], rootMargin: '0px 0px -6% 0px' });
+    root.querySelectorAll('.rv').forEach((el) => {
+      let t = el;
+      for (let a = el; a && a !== root; a = a.parentElement) {
+        if (a.classList.contains('rv-mask') || a.classList.contains('rv-wipe') || a.classList.contains('rv-line')) t = a.parentElement;
+      }
+      if (!groups.has(t)) { groups.set(t, []); io.observe(t); }
+      groups.get(t).push(el);
+    });
+    this._rpIO = io;
+    const bar = root.querySelector('.rp-progress');
+    const sticky = root.querySelector('.rp-sticky');
+    const toTop = root.querySelector('.rp-top');
+    const heroBg = root.querySelector('.rp-hb-bg');
+    const heroCopy = root.querySelector('.rp-hb-content');
+    const imgs = Array.from(root.querySelectorAll('.rp-st-split-photo > img'));
+    const bgs = Array.from(root.querySelectorAll('.rp-st-pan'));
+    const secs = Array.from(root.querySelectorAll('.rp-statement-in, .rp-st-stagger-copy'));
+    let ticking = false;
+    const onScroll = () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        ticking = false;
+        const de = document.scrollingElement || document.documentElement;
+        const y = de.scrollTop || window.scrollY || 0;
+        const vh = window.innerHeight || 800;
+        const max = de.scrollHeight - vh;
+        if (bar) bar.style.transform = 'scaleX(' + (max > 0 ? Math.min(1, y / max) : 0) + ')';
+        if (sticky) sticky.classList.toggle('is-on', y > 600);
+        if (toTop) toTop.classList.toggle('is-on', y > 400);
+        if (heroBg) heroBg.style.translate = '0 ' + Math.round(y * 0.15) + 'px';
+        if (heroCopy) {
+          const p = Math.min(1, y / 650);
+          heroCopy.style.translate = '0 ' + Math.round(-50 * p) + 'px';
+          heroCopy.style.opacity = String(1 - 0.75 * p);
+        }
+        imgs.forEach((el) => {
+          const r = el.getBoundingClientRect();
+          const c = (r.top + r.height / 2 - vh / 2) / vh;
+          el.style.translate = '0 ' + Math.round(c * -48) + 'px';
+          el.style.scale = '1.12';
+        });
+        secs.forEach((el) => {
+          const r = el.getBoundingClientRect();
+          const c = (r.top + r.height / 2 - vh / 2) / vh;
+          el.style.translate = '0 ' + Math.round(Math.max(-1, Math.min(1, c)) * 26) + 'px';
+        });
+        bgs.forEach((el) => {
+          const r = el.getBoundingClientRect();
+          const c = (r.top + r.height / 2 - vh / 2) / vh;
+          el.style.backgroundPosition = '50% ' + Math.round(50 + c * 35) + '%';
+        });
+      });
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+    onScroll();
+    this._rpScroll = onScroll;
+  }
+  componentWillUnmount() {
+    if (this._rpWide) window.removeEventListener('resize', this._rpWide);
+    if (this._rpTap) document.removeEventListener('click', this._rpTap);
+    if (this._rpIO) this._rpIO.disconnect();
+    if (this._rpScroll) {
+      window.removeEventListener('scroll', this._rpScroll);
+      window.removeEventListener('resize', this._rpScroll);
+    }
+  }
+  renderVals() {
+    const open = !!this.state.menuOpen;
+    return {
+      closeMenu: () => this.setState({ menuOpen: false }),
+      menuOpen: open,
+      menuExpanded: open ? 'true' : 'false',
+      toggleMenu: () => this.setState({ menuOpen: !open }),
+      toTop: (e) => {
+        if (e && e.preventDefault) e.preventDefault();
+        const opts = { top: 0, behavior: 'smooth' };
+        window.scrollTo(opts);
+        document.scrollingElement && document.scrollingElement.scrollTo(opts);
+        let el = document.querySelector('.rp-top');
+        for (let p = el && el.parentElement; p; p = p.parentElement) {
+          if (p.scrollTop > 0) p.scrollTo(opts);
+        }
+      }
+    };
+  }
+}
+window.__dcMount(Component);
+</script>
+</body>
+</html>

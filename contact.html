@@ -1,0 +1,443 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Root Within, contact us</title>
+<link rel="icon" href="assets/leaf-ink.png">
+<link rel="stylesheet" href="bundle.css">
+<style>body{margin:0;background:#ffffff}</style>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&amp;family=Jost:wght@300;400;500;600&amp;display=swap">
+<style>
+body{margin:0;background:#ffffff}
+/* ===== Contact us page: built on the Root Within design system (ds/root-within/components/bundle.css); only page layout lives here ===== */
+.rp mark{background:none;color:var(--rp-green-600);font-weight:inherit}
+
+/* Main content: title, booking card and contact form, centred on the white page */
+.rp-ct{padding:clamp(16px, 8px + 2vw, 40px) 0 clamp(72px, 50px + 6vw, 128px)}
+.rp-ct-panel{position:relative;padding:clamp(24px, 12px + 3vw, 56px) 0 0;display:flex;flex-direction:column;align-items:center;gap:clamp(28px, 20px + 2vw, 44px);overflow:hidden}
+.rp-ct-head{display:flex;flex-direction:column;align-items:center;text-align:center;gap:16px;max-width:620px}
+.rp .rp-ct-title{color:var(--rp-ink);margin:0}
+.rp .rp-ct-intro{color:var(--rp-ink);margin:0}
+.rp-ct-card{width:100%;max-width:760px;box-sizing:border-box;background:#fff;border:1px solid #e2e8de;border-radius:20px;padding:clamp(24px, 12px + 3vw, 48px);box-shadow:0 18px 50px rgba(20,40,25,.07)}
+
+/* Booking: the default option, a soft green card straight under the title */
+.rp-ct-book{width:100%;max-width:760px;box-sizing:border-box;display:grid;grid-template-columns:minmax(0, 1fr) auto;align-items:center;gap:24px 40px;background:var(--rp-green-100);border:1px solid var(--rp-green-200);border-radius:20px;padding:clamp(28px, 16px + 3vw, 48px)}
+.rp-ct-book-copy{display:flex;flex-direction:column;gap:10px;min-width:0}
+.rp .rp-ct-book .rp-label{color:var(--rp-green-600)}
+.rp .rp-ct-book-title{font-family:var(--rp-serif);font-size:clamp(30px, 24px + 1.6vw, 42px);font-weight:500;line-height:1.1;color:var(--rp-green-900);margin:0}
+.rp .rp-ct-book-text{font-size:16px;font-weight:300;line-height:1.6;color:var(--rp-ink);margin:0;max-width:420px}
+.rp a.rp-ct-book-btn{min-height:54px;padding:0 32px;background:var(--rp-green-600);color:#fff;font-weight:600;transition:background-color .25s ease,color .25s ease,transform .25s ease}
+.rp a.rp-ct-book-btn:hover{background:var(--rp-green-700);color:#fff;transform:translateY(-2px)}
+
+/* Divider into the message form */
+.rp-ct-or{display:flex;flex-direction:column;align-items:center;gap:14px;width:100%;max-width:760px;text-align:center}
+.rp .rp-ct-or-line{display:flex;align-items:center;gap:16px;width:100%;margin:0;font-size:12px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--rp-green-700)}
+.rp-ct-or-line::before,.rp-ct-or-line::after{content:"";flex:1 1 0;height:1px;background:rgba(47,93,58,.25)}
+.rp .rp-ct-or .rp-ct-intro{max-width:560px}
+@media (max-width:767px){
+.rp-ct-book{grid-template-columns:minmax(0, 1fr);text-align:left}
+.rp a.rp-ct-book-btn{width:100%;display:flex}
+}
+
+/* Contact form (same fields and styling as the original pop-up) */
+.rp-bk-intro{margin:0}
+.rp .rp-bk-title{font-family:var(--rp-serif, "Cormorant Garamond", serif);font-size:clamp(32px, 27.30px + 1.304vw, 44px);font-weight:500;line-height:1.1;color:#1f2b23;margin:0}
+.rp .rp-bk-intro{font-size:16px;line-height:1.6;font-weight:300;color:#5a665e;margin:0;max-width:520px}
+.rp-bk-form{display:grid;grid-template-columns:repeat(2, minmax(0, 1fr));gap:16px;margin:0}
+.rp-bk-field{display:flex;flex-direction:column;gap:8px;min-width:0}
+.rp-bk-wide{grid-column:1 / -1}
+.rp-bk-field label{font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#1f2b23}
+.rp-bk-field label span{font-weight:400;letter-spacing:.06em;text-transform:none;color:#5a665e}
+.rp-bk-field input,.rp-bk-field select,.rp-bk-field textarea{width:100%;box-sizing:border-box;font-family:var(--rp-sans, "Jost", sans-serif);font-size:16px;font-weight:300;line-height:1.4;color:#1f2b23;background:#f6f9f4;border:1px solid #c8d4c2;border-radius:12px;padding:13px 16px;min-height:50px;transition:border-color .2s ease,background-color .2s ease,box-shadow .2s ease;-webkit-appearance:none;appearance:none}
+.rp-bk-field textarea{min-height:112px;resize:vertical}
+.rp-bk-field select{padding-right:44px;cursor:pointer;background-image:linear-gradient(45deg, transparent 50%, #3b7d36 50%),linear-gradient(135deg, #3b7d36 50%, transparent 50%);background-position:calc(100% - 22px) 52%,calc(100% - 16px) 52%;background-size:6px 6px,6px 6px;background-repeat:no-repeat}
+.rp-bk-field input::placeholder,.rp-bk-field textarea::placeholder{color:#7a857d}
+.rp-bk-field input:hover,.rp-bk-field select:hover,.rp-bk-field textarea:hover{border-color:#5b9a4c}
+.rp-bk-field input:focus,.rp-bk-field select:focus,.rp-bk-field textarea:focus{outline:none;background:#fff;border-color:#3b7d36;box-shadow:0 0 0 3px rgba(59,125,54,.18)}
+.rp-bk-actions{grid-column:1 / -1;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px;margin-top:8px}
+.rp .rp-bk-note{font-size:13px;font-weight:300;color:#5a665e;margin:0}
+.rp-bk-actions .rp-btn{border:0;cursor:pointer;min-width:200px}
+.rp-bk-done{display:flex;flex-direction:column;align-items:flex-start;gap:16px;padding:12px 0 4px}
+.rp-bk-done .rp-rule{width:56px;height:1px;background:#5b9a4c}
+@media (max-width:600px){
+.rp-bk-form{grid-template-columns:minmax(0, 1fr)}
+.rp-bk-actions{flex-direction:column-reverse;align-items:stretch}
+.rp-bk-actions .rp-btn{width:100%}
+}
+
+.rp-bk-done{align-items:center;text-align:center;padding:24px 0 8px}
+.rp .rp-bk-done .rp-bk-intro{max-width:440px}
+
+@media (max-width:600px){
+.rp-ct-card{border-radius:16px}
+}
+
+/* Body text: one size on every page (Jost Light 18px on desktop, 16px on phones) */
+.rp .rp-lead,.rp .rp-st-grow-text,.rp .rp-therapist p:not(.rp-label){font-size:clamp(16px, 15.22px + 0.217vw, 18px) !important;line-height:1.65 !important}
+
+/* "Meet the therapist" is longer, so the menu folds into the menu button a little earlier */
+@media (max-width:1220px){.rp .rp-pillnav{display:none}.rp .rp-burger{display:inline-flex}}
+
+/* Menu: the tab for the page you are on is green */
+.rp .rp-pillnav a[aria-current="page"],.rp .rp-pillnav a[aria-current="page"]:hover{color:var(--rp-green-600) !important;font-weight:600}
+
+/* The side menu is only for screens where the full menu bar does not fit */
+@media (min-width:1221px){.rp ul.rp-mmenu{display:none !important}}
+
+/* No borders on text boxes: boxes are defined by their fill (and shadow) only */
+.rp .rp-ct-book,.rp .rp-ct-card{border-color:transparent !important}
+
+/* Let the form card's shadow show in full (the panel no longer clips it) */
+.rp .rp-ct-panel{overflow:visible}
+
+/* Tap = hover: on touch screens (and on click) non-button elements show their hover effect; tap again or elsewhere to clear */
+.rp-bento-stat.is-tap{background:var(--bento-stat-hover,#cce1bc);translate:0 -4px;box-shadow:var(--shadow-lift,0 18px 40px rgba(20,40,25,.08))}
+.rp-bento-photo.is-tap{translate:0 -4px;box-shadow:0 18px 40px rgba(20,40,25,.12)}
+.rp-bento-feature.is-tap{background:var(--bento-feature-hover,#b2cf9b)}
+.rp-bento-feature.is-tap .rp-bento-quote{background:#fff;translate:0 -4px}
+.rp-areas-list li.is-tap{background:var(--rp-green-100);border-bottom-color:var(--rp-green-200)}
+.rp-areas-list li.is-tap .rp-name{color:var(--rp-green-600)}
+.rp-fact.is-tap{background:#fff;border-color:var(--rp-green-500)}
+.rp-begin-media.is-tap > img{transform:scale(1.05)}
+.rp-therapist.is-tap{background:var(--rp-green-50)}
+</style>
+</head>
+<body>
+<div class="rp">
+<div class="rp-progress" aria-hidden="true"></div>
+
+<header class="rp-sticky" aria-label="Site">
+<div class="rp-sticky-in rp-topbar-in">
+<a class="rp-logo rp-brand" href="index.html" aria-label="Root Within, home"><img src="assets/leaf-ink.png" alt="" width="330" height="550"><span class="rp-brand-text"><span class="rp-brand-name">Root Within</span><span class="rp-brand-sub">Psychotherapy &amp; Counselling</span></span></a>
+<div class="rp-topbar-end">
+<nav class="rp-pillnav" aria-label="Main">
+<ul>
+<li><a href="index.html">Home</a></li>
+<li><a href="story.html">Story</a></li>
+<li><a href="about.html">Meet the therapist</a></li>
+<li><a href="services.html">Services</a></li>
+<li><a href="faq.html">FAQ</a></li>
+<li><a href="contact.html" aria-current="page">Contact us</a></li>
+</ul>
+</nav>
+<a class="rp-btn rp-btn-cta" href="https://book.carepatron.com/Root-Within/Karina?p=IycEjDdITNqGgzR2wNuk-g&amp;s=QvtfvDXC&amp;step=service" target="_blank" rel="noopener">Book an appointment</a>
+<button class="rp-burger" aria-label="Open menu" data-dcb-aria-expanded="{{menuExpanded}}" data-dc-on-click="toggleMenu"><span></span><span></span><span></span></button>
+</div>
+</div>
+</header>
+
+<template data-dc-if="menuOpen">
+<ul class="rp-mmenu">
+<li><a href="index.html" data-dc-on-click="closeMenu">Home</a></li>
+<li><a href="story.html" data-dc-on-click="closeMenu">Story</a></li>
+<li><a href="about.html" data-dc-on-click="closeMenu">Meet the therapist</a></li>
+<li><a href="services.html" data-dc-on-click="closeMenu">Services</a></li>
+<li><a href="faq.html" data-dc-on-click="closeMenu">FAQ</a></li>
+<li><a href="contact.html" aria-current="page" data-dc-on-click="closeMenu">Contact us</a></li>
+<li><a class="rp-btn rp-btn-primary" href="https://book.carepatron.com/Root-Within/Karina?p=IycEjDdITNqGgzR2wNuk-g&amp;s=QvtfvDXC&amp;step=service" target="_blank" rel="noopener" data-dc-on-click="closeMenu">Book an appointment</a></li>
+</ul>
+</template>
+
+<header class="rp-topbar">
+<div class="rp-topbar-in">
+<a class="rp-logo rp-brand" href="index.html" aria-label="Root Within, home"><img src="assets/leaf-ink.png" alt="" width="330" height="550"><span class="rp-brand-text"><span class="rp-brand-name">Root Within</span><span class="rp-brand-sub">Psychotherapy &amp; Counselling</span></span></a>
+<div class="rp-topbar-end">
+<nav class="rp-pillnav" aria-label="Main">
+<ul>
+<li><a href="index.html">Home</a></li>
+<li><a href="story.html">Story</a></li>
+<li><a href="about.html">Meet the therapist</a></li>
+<li><a href="services.html">Services</a></li>
+<li><a href="faq.html">FAQ</a></li>
+<li><a href="contact.html" aria-current="page">Contact us</a></li>
+</ul>
+</nav>
+<a class="rp-btn rp-btn-cta" href="https://book.carepatron.com/Root-Within/Karina?p=IycEjDdITNqGgzR2wNuk-g&amp;s=QvtfvDXC&amp;step=service" target="_blank" rel="noopener">Book an appointment</a>
+<button class="rp-burger" aria-label="Open menu" data-dcb-aria-expanded="{{menuExpanded}}" data-dc-on-click="toggleMenu"><span></span><span></span><span></span></button>
+</div>
+</div>
+</header>
+
+<section class="rp-ct">
+<div class="rp-wrap">
+<div class="rp-ct-panel">
+<div class="rp-ct-head">
+<p class="rp-label">Get in touch</p>
+<h1 class="rp-h1 rp-ct-title">Contact us</h1>
+<div class="rp-rule" aria-hidden="true"></div>
+</div>
+<div class="rp-ct-book">
+<div class="rp-ct-book-copy">
+<p class="rp-label">Book online</p>
+<h2 class="rp-ct-book-title">Ready to book a session?</h2>
+<p class="rp-ct-book-text">The quickest way to book. Choose a time that suits you on our online booking page.</p>
+</div>
+<a class="rp-btn rp-btn-primary rp-ct-book-btn" href="https://book.carepatron.com/Root-Within/Karina?p=IycEjDdITNqGgzR2wNuk-g&amp;s=QvtfvDXC&amp;step=service" target="_blank" rel="noopener">Book an appointment</a>
+</div>
+<div class="rp-ct-or">
+<p class="rp-ct-or-line"><span>Or send us a message</span></p>
+<p class="rp-lead rp-ct-intro">Get in touch with us if you have any questions or need to inquire about alternative booking times.</p>
+</div>
+<div class="rp-ct-card">
+<template data-dc-if="formOn">
+<form class="rp-bk-form" novalidate="">
+<div class="rp-bk-field"><label for="rp-bk-first">First name</label><input id="rp-bk-first" name="first_name" type="text" autocomplete="given-name" required=""></div>
+<div class="rp-bk-field"><label for="rp-bk-last">Last name</label><input id="rp-bk-last" name="last_name" type="text" autocomplete="family-name" required=""></div>
+<div class="rp-bk-field"><label for="rp-bk-email">Email</label><input id="rp-bk-email" name="email" type="email" autocomplete="email" required=""></div>
+<div class="rp-bk-field"><label for="rp-bk-phone">Phone <span>(optional)</span></label><input id="rp-bk-phone" name="phone" type="tel" autocomplete="tel"></div>
+<div class="rp-bk-field"><label for="rp-bk-contact">Contact preference</label><select id="rp-bk-contact" name="contact_preference"><option value="Email">Email</option><option value="Phone">Phone (if applicable)</option></select></div>
+<div class="rp-bk-field"><label for="rp-bk-lang">Language preference</label><select id="rp-bk-lang" name="language_preference"><option value="English">English</option><option value="Cantonese">Cantonese</option><option value="Mandarin">Mandarin</option></select></div>
+<div class="rp-bk-field rp-bk-wide"><label for="rp-bk-msg">Messages</label><textarea id="rp-bk-msg" name="message" rows="5" placeholder="Tell us about your questions or needs" required=""></textarea></div>
+<div class="rp-bk-field rp-bk-wide"><label for="rp-bk-time">Appointment time or date preference</label><input id="rp-bk-time" name="time_preference" type="text"></div>
+<div class="rp-bk-actions"><p class="rp-bk-note" style="font-size: 15px; line-height: 1.55; font-weight: 300; letter-spacing: 0px; font-style: normal; font-family: &quot;Jost&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif">Root Within is not a crisis service. In a crisis, call or text 988.</p><button class="rp-btn rp-btn-primary" type="button" data-dc-on-click="submitForm">Submit</button></div>
+</form>
+</template>
+<template data-dc-if="sent">
+<div class="rp-bk-done">
+<p class="rp-label">Message sent</p>
+<h2 class="rp-bk-title">Thank you for reaching out</h2>
+<div class="rp-rule" aria-hidden="true"></div>
+<p class="rp-bk-intro">Karina will get back to you soon, using the contact preference you chose.</p>
+<button class="rp-btn rp-btn-primary" type="button" data-dc-on-click="resetForm">Send another message</button>
+</div>
+</template>
+</div>
+</div>
+</div>
+</section>
+
+<footer class="rp-footer2">
+<div class="rp-wrap">
+<div class="rp-footer2-grid">
+<p class="rp-footer2-tag">Begin your healing journey at <br>Root Within.</p>
+<img class="rp-footer2-logo" src="assets/logo.png" alt="Root Within">
+<dl class="rp-footer2-contact">
+<dt>Email</dt><dd><a href="mailto:rootwithin.ca@gmail.com">rootwithin.ca@gmail.com</a></dd>
+<dt>Phone</dt><dd><a href="tel:+12898164602">(289) 816-4602</a></dd>
+<dt>IG</dt><dd><a href="#">@rootwithin.ca</a></dd>
+</dl>
+</div>
+</div>
+</footer>
+
+<a class="rp-top" href="#" aria-label="Back to top" data-dc-on-click="toTop"></a>
+</div>
+<script>
+(function () {
+  'use strict';
+  // Stand-in for the Claude Design runtime: fills {{holes}}, toggles <sc-if> blocks, wires event handlers.
+  var comp, vals = {};
+  function fill(tpl) {
+    return tpl.replace(/\{\{\s*([^}\s]+)\s*\}\}/g, function (m, k) {
+      var v = vals[k];
+      return v == null || v === false || typeof v === 'function' ? '' : String(v);
+    });
+  }
+  function render() {
+    vals = comp.renderVals() || {};
+    Array.prototype.forEach.call(document.querySelectorAll('template[data-dc-if]'), function (t) {
+      var on = !!vals[t.getAttribute('data-dc-if')];
+      if (on && !t._dcNodes) {
+        var frag = t.content.cloneNode(true);
+        t._dcNodes = Array.prototype.slice.call(frag.childNodes);
+        t.parentNode.insertBefore(frag, t.nextSibling);
+      } else if (!on && t._dcNodes) {
+        t._dcNodes.forEach(function (n) { if (n.parentNode) n.parentNode.removeChild(n); });
+        t._dcNodes = null;
+      }
+    });
+    Array.prototype.forEach.call(document.body.querySelectorAll('*'), function (el) {
+      for (var i = 0; i < el.attributes.length; i++) {
+        var a = el.attributes[i];
+        if (a.name.indexOf('data-dcb-') === 0) el.setAttribute(a.name.slice(9), fill(a.value));
+      }
+    });
+  }
+  window.DCLogic = function DCLogic(props) { this.props = props || {}; this.state = {}; };
+  window.DCLogic.prototype.setState = function (p) {
+    Object.assign(this.state, typeof p === 'function' ? p(this.state) : p);
+    render();
+  };
+  ['click', 'submit', 'input', 'change'].forEach(function (type) {
+    document.addEventListener(type, function (e) {
+      var el = e.target && e.target.closest ? e.target.closest('[data-dc-on-' + type + ']') : null;
+      if (!el) return;
+      var fn = vals[el.getAttribute('data-dc-on-' + type)];
+      if (typeof fn !== 'function') return;
+      fn({
+        type: type, target: e.target, currentTarget: el, nativeEvent: e,
+        preventDefault: function () { e.preventDefault(); },
+        stopPropagation: function () { e.stopPropagation(); }
+      });
+    });
+  });
+  window.__dcMount = function (Component) {
+    comp = new Component({});
+    render();
+    if (comp.componentDidMount) comp.componentDidMount();
+  };
+})();
+</script>
+<script>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { menuOpen: false };
+  }
+  componentDidMount() {
+    // close the side menu if the screen becomes wide enough for the full menu bar
+    this._rpWide = () => { if ((window.innerWidth || 0) > 1220 && this.state.menuOpen) this.setState({ menuOpen: false }); };
+    window.addEventListener('resize', this._rpWide);
+    // tap or click shows the same effect as hover (touch screens have no hover); tap again or elsewhere to clear
+    const tapSel = [".rp-bento-stat", ".rp-bento-photo", ".rp-bento-feature", ".rp-areas-list li", ".rp-fact", ".rp-begin-media", ".rp-therapist"];
+    this._rpTap = (e) => {
+      const rootEl = document.querySelector('.rp');
+      if (!rootEl || !e.target || !e.target.closest) return;
+      let t = null;
+      for (const s of tapSel) { const c = e.target.closest(s); if (c && rootEl.contains(c) && (!t || t.contains(c))) t = c; }
+      rootEl.querySelectorAll('.is-tap').forEach((el) => { if (el !== t) el.classList.remove('is-tap'); });
+      if (t) t.classList.toggle('is-tap');
+    };
+    document.addEventListener('click', this._rpTap);
+    const root = document.querySelector('.rp');
+    if (!root || !window.IntersectionObserver) return;
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    root.classList.add('rp-js');
+    const tag = (sel, cls, step, base) => {
+      root.querySelectorAll(sel).forEach((el, i) => {
+        if (el.closest('.rp-hero') || el.closest('.rp-topbar') || el.closest('.rp-sticky')) return;
+        el.classList.add('rv');
+        (cls || '').split(' ').filter(Boolean).forEach((c) => el.classList.add(c));
+        const d = (base || 0) + (step ? i * step : 0);
+        if (d) el.style.setProperty('--rv-d', d.toFixed(2) + 's');
+      });
+    };
+    tag('.rp-label', 'rv-label');
+    tag('h1, h2, .rp-footer2-tag', 'rv-mask', 0, 0.1);
+    tag('.rp-rule', 'rv-line', 0, 0.3);
+    tag('.rp-ct-book', 'rv-scale', 0, 0.25);
+    tag('.rp-ct-book-text, .rp-ct-book-btn', '', 0.1, 0.45);
+    tag('.rp-ct-or-line', '', 0, 0.1);
+    tag('.rp-ct-intro', '', 0, 0.2);
+    tag('.rp-ct-card', 'rv-scale', 0, 0.3);
+    tag('.rp-footer2-grid > *', '', 0.12);
+    tag('.rp-footer2-contact', '', 0, 0.3);
+    // clipped or zero-width starting states hide an element from the observer, so watch an unclipped ancestor instead
+    const groups = new Map();
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        // replay every time: reveal when it scrolls in, reset once it has fully left the screen
+        if (e.isIntersecting && e.intersectionRatio >= 0.08) {
+          (groups.get(e.target) || []).forEach((el) => el.classList.add('rp-in'));
+        } else if (!e.isIntersecting) {
+          (groups.get(e.target) || []).forEach((el) => el.classList.remove('rp-in'));
+        }
+      });
+    }, { threshold: [0, 0.08], rootMargin: '0px 0px -6% 0px' });
+    root.querySelectorAll('.rv').forEach((el) => {
+      let t = el;
+      for (let a = el; a && a !== root; a = a.parentElement) {
+        if (a.classList.contains('rv-mask') || a.classList.contains('rv-wipe') || a.classList.contains('rv-line')) t = a.parentElement;
+      }
+      if (!groups.has(t)) { groups.set(t, []); io.observe(t); }
+      groups.get(t).push(el);
+    });
+    this._rpIO = io;
+    const bar = root.querySelector('.rp-progress');
+    const sticky = root.querySelector('.rp-sticky');
+    const toTop = root.querySelector('.rp-top');
+    const heroBg = root.querySelector('.rp-hb-bg');
+    const heroCopy = root.querySelector('.rp-hb-content');
+    const imgs = [];
+    const bgs = Array.from(root.querySelectorAll('.rp-none'));
+    const secs = [];
+    let ticking = false;
+    const onScroll = () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        ticking = false;
+        const de = document.scrollingElement || document.documentElement;
+        const y = de.scrollTop || window.scrollY || 0;
+        const vh = window.innerHeight || 800;
+        const max = de.scrollHeight - vh;
+        if (bar) bar.style.transform = 'scaleX(' + (max > 0 ? Math.min(1, y / max) : 0) + ')';
+        if (sticky) sticky.classList.toggle('is-on', y > 600);
+        if (toTop) toTop.classList.toggle('is-on', y > 400);
+        if (heroBg) heroBg.style.translate = '0 ' + Math.round(y * 0.15) + 'px';
+        if (heroCopy) {
+          const p = Math.min(1, y / 650);
+          heroCopy.style.translate = '0 ' + Math.round(-50 * p) + 'px';
+          heroCopy.style.opacity = String(1 - 0.75 * p);
+        }
+        imgs.forEach((el) => {
+          const r = el.getBoundingClientRect();
+          const c = (r.top + r.height / 2 - vh / 2) / vh;
+          el.style.translate = '0 ' + Math.round(c * -48) + 'px';
+          el.style.scale = '1.12';
+        });
+        secs.forEach((el) => {
+          const r = el.getBoundingClientRect();
+          const c = (r.top + r.height / 2 - vh / 2) / vh;
+          el.style.translate = '0 ' + Math.round(Math.max(-1, Math.min(1, c)) * 26) + 'px';
+        });
+        bgs.forEach((el) => {
+          const r = el.getBoundingClientRect();
+          const c = (r.top + r.height / 2 - vh / 2) / vh;
+          el.style.backgroundPosition = '50% ' + Math.round(50 + c * 35) + '%';
+        });
+      });
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+    onScroll();
+    this._rpScroll = onScroll;
+  }
+  componentWillUnmount() {
+    if (this._rpWide) window.removeEventListener('resize', this._rpWide);
+    if (this._rpTap) document.removeEventListener('click', this._rpTap);
+    if (this._rpIO) this._rpIO.disconnect();
+    if (this._rpScroll) {
+      window.removeEventListener('scroll', this._rpScroll);
+      window.removeEventListener('resize', this._rpScroll);
+    }
+  }
+  renderVals() {
+    const open = !!this.state.menuOpen;
+    const sent = !!this.state.sent;
+    return {
+      formOn: !sent,
+      sent: sent,
+      submitForm: (e) => {
+        if (e && e.preventDefault) e.preventDefault();
+        const btn = e && (e.currentTarget || e.target);
+        const form = btn && btn.closest ? btn.closest('form') : null;
+        if (form && form.reportValidity && !form.reportValidity()) return;
+        this.setState({ sent: true });
+      },
+      resetForm: (e) => {
+        if (e && e.preventDefault) e.preventDefault();
+        this.setState({ sent: false });
+      },
+      closeMenu: () => this.setState({ menuOpen: false }),
+      menuOpen: open,
+      menuExpanded: open ? 'true' : 'false',
+      toggleMenu: () => this.setState({ menuOpen: !open }),
+      toTop: (e) => {
+        if (e && e.preventDefault) e.preventDefault();
+        const opts = { top: 0, behavior: 'smooth' };
+        window.scrollTo(opts);
+        document.scrollingElement && document.scrollingElement.scrollTo(opts);
+        let el = document.querySelector('.rp-top');
+        for (let p = el && el.parentElement; p; p = p.parentElement) {
+          if (p.scrollTop > 0) p.scrollTo(opts);
+        }
+      }
+    };
+  }
+}
+window.__dcMount(Component);
+</script>
+</body>
+</html>
