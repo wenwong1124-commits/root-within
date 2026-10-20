@@ -157,6 +157,19 @@ body{margin:0;background:#ffffff}
 /* Bigger light text (body is 18px on phones, 19px on desktop) */
 .rp .rp-footer2 dd,.rp .rp-footer2 dd a{font-size:17px !important}
 .rp .rp-st-row span{font-size:clamp(17px, 16.61px + 0.109vw, 18px) !important}
+
+/* Root marks: super subtle line drawings in the empty margins, never over text */
+.rp-deco{position:absolute;pointer-events:none;background-repeat:no-repeat;background-size:contain;background-position:center;opacity:.22;z-index:0}
+.rp-deco-a{background-image:url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 200 96%22 fill=%22none%22 stroke=%22%232f6b3a%22 stroke-width=%221.4%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22%3E%3Cpath d=%22M4 12 H196%22/%3E%3Cpath d=%22M58 12 V62 M58 38 L49 48.35 M58 38 L67 48.35 M58 52 L45 66.95 M58 52 L71 66.95%22/%3E%3Cpath d=%22M142 12 V42 M142 34 L134 43.2 M142 34 L150 43.2%22/%3E%3C/svg%3E")}
+.rp-deco-b{background-image:url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 200 96%22 fill=%22none%22 stroke=%22%232f6b3a%22 stroke-width=%221.4%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22%3E%3Cpath d=%22M4 12 H84 M104 12 H196%22/%3E%3Cpath d=%22M36 12 V74 M36 40 L28 49.2 M36 40 L44 49.2 M36 54 L24 67.8 M36 54 L48 67.8 M36 66 L30 72.9 M36 66 L42 72.9%22/%3E%3Cpath d=%22M94 22 V44 M94 36 L88 42.9 M94 36 L100 42.9%22/%3E%3Cpath d=%22M156 12 V52 M156 42 L146 53.5 M156 42 L166 53.5%22/%3E%3C/svg%3E")}
+.rp-deco-c{background-image:url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 200 96%22 fill=%22none%22 stroke=%22%232f6b3a%22 stroke-width=%221.4%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22%3E%3Cpath d=%22M30 12 H170%22/%3E%3Cpath d=%22M100 12 V70 M100 36 L91 46.35 M100 36 L109 46.35 M100 50 L87 64.95 M100 50 L113 64.95 M100 62 L93 70.05 M100 62 L107 70.05%22/%3E%3C/svg%3E")}
+.rp-deco-host{position:relative}
+@media (max-width:1099px){.rp-deco-side{display:none}}
+@media (min-width:1100px){.rp-deco-mob{display:none}}
+
+.rp .rp-st-root-sec > .rp-deco-l{left:clamp(24px, 4vw, 72px);top:16%;width:190px;height:92px}
+.rp .rp-st-root-sec > .rp-deco-r{right:clamp(24px, 4vw, 72px);top:30%;width:190px;height:92px}
+.rp .rp-st-root-sec > .rp-deco-mob{left:50%;bottom:10px;width:120px;height:58px;transform:translateX(-50%)}
 </style>
 </head>
 <body>
@@ -244,7 +257,7 @@ body{margin:0;background:#ffffff}
 </section>
 </div>
 
-<section class="rp-statement rp-st-root-sec">
+<section class="rp-statement rp-st-root-sec rp-deco-host"><span class="rp-deco rp-deco-side rp-deco-a rp-deco-l" aria-hidden="true"></span><span class="rp-deco rp-deco-side rp-deco-b rp-deco-r" aria-hidden="true"></span><span class="rp-deco rp-deco-mob rp-deco-c" aria-hidden="true"></span>
 <div class="rp-wrap">
 <div class="rp-statement-in rp-st-root">
 <h2>To Root Within is to gently turn inward, <span class="rp-st-cont">to pause and listen to what is happening beneath the surface.</span></h2>

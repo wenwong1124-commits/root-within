@@ -390,6 +390,21 @@ a:hover .rx-arrow,button:hover .rx-arrow{transform:translateX(4px)}
 .rp button.rx-print{padding:8px 8px 0}
 .rx-print-cap{padding:10px 4px 12px;font-size:17px}
 }
+
+/* Root marks: super subtle line drawings in the empty margins, never over text */
+.rp-deco{position:absolute;pointer-events:none;background-repeat:no-repeat;background-size:contain;background-position:center;opacity:.22;z-index:0}
+.rp-deco-a{background-image:url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 200 96%22 fill=%22none%22 stroke=%22%232f6b3a%22 stroke-width=%221.4%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22%3E%3Cpath d=%22M4 12 H196%22/%3E%3Cpath d=%22M58 12 V62 M58 38 L49 48.35 M58 38 L67 48.35 M58 52 L45 66.95 M58 52 L71 66.95%22/%3E%3Cpath d=%22M142 12 V42 M142 34 L134 43.2 M142 34 L150 43.2%22/%3E%3C/svg%3E")}
+.rp-deco-b{background-image:url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 200 96%22 fill=%22none%22 stroke=%22%232f6b3a%22 stroke-width=%221.4%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22%3E%3Cpath d=%22M4 12 H84 M104 12 H196%22/%3E%3Cpath d=%22M36 12 V74 M36 40 L28 49.2 M36 40 L44 49.2 M36 54 L24 67.8 M36 54 L48 67.8 M36 66 L30 72.9 M36 66 L42 72.9%22/%3E%3Cpath d=%22M94 22 V44 M94 36 L88 42.9 M94 36 L100 42.9%22/%3E%3Cpath d=%22M156 12 V52 M156 42 L146 53.5 M156 42 L166 53.5%22/%3E%3C/svg%3E")}
+.rp-deco-c{background-image:url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 200 96%22 fill=%22none%22 stroke=%22%232f6b3a%22 stroke-width=%221.4%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22%3E%3Cpath d=%22M30 12 H170%22/%3E%3Cpath d=%22M100 12 V70 M100 36 L91 46.35 M100 36 L109 46.35 M100 50 L87 64.95 M100 50 L113 64.95 M100 62 L93 70.05 M100 62 L107 70.05%22/%3E%3C/svg%3E")}
+.rp-deco-host{position:relative}
+@media (max-width:1099px){.rp-deco-side{display:none}}
+@media (min-width:1100px){.rp-deco-mob{display:none}}
+
+.rp .rp-sv-note{max-width:none}
+.rp .rp-sv-note > .rp-deco-l{left:0;top:50%;width:150px;height:72px;transform:translateY(-70%)}
+.rp .rp-sv-note > .rp-deco-r{right:0;top:50%;width:150px;height:72px;transform:translateY(-20%)}
+.rp .rp-sv-note{padding-left:170px;padding-right:170px}
+@media (max-width:1099px){.rp .rp-sv-note{padding-left:16px;padding-right:16px}}
 </style>
 </head>
 <body>
@@ -452,8 +467,8 @@ a:hover .rx-arrow,button:hover .rx-arrow{transform:translateX(4px)}
 <div class="rp-wrap">
 <div class="rx-hero2-grid">
 <div class="rx-prints">
-<button class="rx-print rx-print-a" type="button" aria-controls="rp-sv-psy" data-dc-on-click="heroPsy"><span class="rx-print-img"><img src="assets/service-plant-roots.webp?v=e5a66987" alt="Hands holding a young plant with its roots" style="object-position: 50% 55%"></span><span class="rx-print-cap"><span>Individual Psychotherapy</span><span class="rx-print-arrow" aria-hidden="true">&rarr;</span></span></button>
-<button class="rx-print rx-print-b" type="button" aria-controls="rp-sv-grief" data-dc-on-click="heroGrief"><span class="rx-print-img"><img src="assets/service-meadow-tree.webp?v=b98eefda" alt="Rain drops resting on green leaves" style="object-position: 50% 50%"></span><span class="rx-print-cap"><span>Grief and Bereavement Counselling</span><span class="rx-print-arrow" aria-hidden="true">&rarr;</span></span></button>
+<button class="rx-print rx-print-a" type="button" aria-controls="rp-sv-psy" data-dc-on-click="heroPsy"><span class="rx-print-img"><img src="assets/service-plant-roots.webp?v=e5a66987" alt="Hands holding a young plant with its roots" style="object-position: 50% 55%"></span><span class="rx-print-cap"><span>Individual Psychotherapy</span><span class="rx-print-arrow" aria-hidden="true">→</span></span></button>
+<button class="rx-print rx-print-b" type="button" aria-controls="rp-sv-grief" data-dc-on-click="heroGrief"><span class="rx-print-img"><img src="assets/service-meadow-tree.webp?v=b98eefda" alt="Rain drops resting on green leaves" style="object-position: 50% 50%"></span><span class="rx-print-cap"><span>Grief and Bereavement Counselling</span><span class="rx-print-arrow" aria-hidden="true">→</span></span></button>
 </div>
 <div class="rx-hero-copy">
 <h1 class="rx-h1">Services</h1>
@@ -524,7 +539,7 @@ a:hover .rx-arrow,button:hover .rx-arrow{transform:translateX(4px)}
 <p class="rx-p rx-intro-p">Therapy is a <mark>collaborative process</mark>, guided by your needs and goals. We will work at a pace that feels comfortable and manageable for you, finding ways forward that feel more aligned with <mark>who you are</mark>.</p>
 </div>
 </div>
-<p class="rp-sv-note">You do not need to have everything figured out before beginning therapy. Sometimes, knowing that something isn't quite right is enough reason to reach out.</p>
+<p class="rp-sv-note rp-deco-host"><span class="rp-deco rp-deco-side rp-deco-a rp-deco-l" aria-hidden="true"></span><span class="rp-deco rp-deco-side rp-deco-b rp-deco-r" aria-hidden="true"></span>You do not need to have everything figured out before beginning therapy. Sometimes, knowing that something isn't quite right is enough reason to reach out.</p>
 <div class="rx-next"><button class="rp-btn rp-btn-outline" type="button" aria-controls="rp-sv-grief" data-dc-on-click="nextGrief">Learn about Grief and Bereavement Counselling <span class="rx-next-arrow" aria-hidden="true">→</span></button></div>
 </div>
 </section>
@@ -581,7 +596,7 @@ a:hover .rx-arrow,button:hover .rx-arrow{transform:translateX(4px)}
 <li>Moving away from a community, home, or familiar way of life</li>
 <li>Losses that may not be openly recognized or understood by others (Disenfranchised Losses)</li>
 </ul>
-<p class="rp-sv-note">Not every loss is recognised or understood by others. Whatever your loss looks like, your experience matters.</p>
+<p class="rp-sv-note rp-deco-host"><span class="rp-deco rp-deco-side rp-deco-a rp-deco-l" aria-hidden="true"></span><span class="rp-deco rp-deco-side rp-deco-b rp-deco-r" aria-hidden="true"></span>Not every loss is recognised or understood by others. Whatever your loss looks like, your experience matters.</p>
 </div>
 </section>
 
@@ -594,7 +609,7 @@ a:hover .rx-arrow,button:hover .rx-arrow{transform:translateX(4px)}
 <p class="rx-p rx-intro-p">As you navigate this change, we can also explore how your experience has shaped your sense of self, what matters to you now, and how you might <mark>find meaning in life moving forward</mark>.</p>
 </div>
 </div>
-<p class="rp-sv-note">You do not need to wait until your grief feels overwhelming to seek counselling. Support can be helpful at any point in the grieving process.</p>
+<p class="rp-sv-note rp-deco-host"><span class="rp-deco rp-deco-side rp-deco-a rp-deco-l" aria-hidden="true"></span><span class="rp-deco rp-deco-side rp-deco-b rp-deco-r" aria-hidden="true"></span>You do not need to wait until your grief feels overwhelming to seek counselling. Support can be helpful at any point in the grieving process.</p>
 <div class="rx-next"><button class="rp-btn rp-btn-outline" type="button" aria-controls="rp-sv-psy" data-dc-on-click="nextPsy">Learn about Individual Psychotherapy <span class="rx-next-arrow" aria-hidden="true">→</span></button></div>
 </div>
 </section>
