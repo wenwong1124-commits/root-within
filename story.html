@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Root Within, our story</title>
 <link rel="icon" href="assets/leaf-ink.png?v=62a1ad3e">
-<link rel="stylesheet" href="bundle.css?v=87c273bd">
+<link rel="stylesheet" href="bundle.css?v=9697bf57">
 <style>body{margin:0;background:#ffffff}</style>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&amp;family=Jost:wght@300;400;500;600&amp;display=swap">
 <style>
@@ -54,7 +54,7 @@ body{margin:0;background:#ffffff}
 .rp-st-meaning-sec{padding:clamp(72px, 50px + 6vw, 128px) 0}
 .rp-st-stagger{display:grid;grid-template-columns:minmax(0, 1fr) minmax(0, 1fr);gap:clamp(32px, 12px + 5vw, 96px);align-items:stretch}
 .rp-st-stagger-copy{display:flex;flex-direction:column;gap:22px}
-.rp .rp-st-stagger-copy > p:not(.rp-label){font-size:clamp(16px, 15.22px + 0.217vw, 18px);color:var(--rp-muted);max-width:480px}
+.rp .rp-st-stagger-copy > p:not(.rp-label){font-size:clamp(18px, 17.61px + 0.109vw, 19px);color:var(--rp-muted);max-width:480px}
 .rp-st-meaning-photo{border-radius:var(--rp-radius);min-height:320px;background-size:cover;background-position:50% 50%;background-repeat:no-repeat;transition:translate .35s cubic-bezier(.2,.7,.2,1),box-shadow .35s ease}
 .rp-st-meaning-photo:hover{translate:0 -4px;box-shadow:0 18px 40px rgba(20,40,25,.12)}
 .rp-st-shapes{margin:8px 0 0;background:var(--rp-green-100);border-radius:var(--rp-radius);padding:24px 28px 28px;display:flex;flex-direction:column;gap:16px;transition:background-color .35s ease}
@@ -110,7 +110,7 @@ body{margin:0;background:#ffffff}
 @media (max-width:400px){.rp .rp-st-grow .rp-h2{font-size:26px}}
 
 /* Body text: one size on every page (Jost Light 18px on desktop, 16px on phones) */
-.rp .rp-lead,.rp .rp-st-grow-text,.rp .rp-therapist p:not(.rp-label){font-size:clamp(16px, 15.22px + 0.217vw, 18px) !important;line-height:1.65 !important}
+.rp .rp-lead,.rp .rp-st-grow-text,.rp .rp-therapist p:not(.rp-label){font-size:clamp(18px, 17.61px + 0.109vw, 19px) !important;line-height:1.65 !important}
 @media (min-width:768px){.rp .rp-bento-stat > p:not(.rp-bento-num),.rp .rp-bento-quote p{font-size:18px !important;line-height:1.6 !important}}
 
 /* "Meet the therapist" is longer, so the menu folds into the menu button a little earlier */
@@ -150,6 +150,13 @@ body{margin:0;background:#ffffff}
 /* Hero banner: the grain layer and photo follow the rounded corners in every browser (Safari can ignore overflow clipping on moving or blended layers) */
 .rp .rp-hb{clip-path:inset(0 round clamp(24px, 14px + 2.4vw, 44px))}
 .rp .rp-hb::after,.rp .rp-hb-bg{border-radius:inherit}
+
+/* No moving ripples behind statements */
+.rp .rp-statement::before,.rp .rp-statement::after,.rp .rp-statement-in::before,.rp .rp-statement-in::after{content:none !important;display:none !important;animation:none !important}
+
+/* Bigger light text (body is 18px on phones, 19px on desktop) */
+.rp .rp-footer2 dd,.rp .rp-footer2 dd a{font-size:17px !important}
+.rp .rp-st-row span{font-size:clamp(17px, 16.61px + 0.109vw, 18px) !important}
 </style>
 </head>
 <body>

@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Root Within, about Karina</title>
 <link rel="icon" href="assets/leaf-ink.png?v=62a1ad3e">
-<link rel="stylesheet" href="bundle.css?v=87c273bd">
+<link rel="stylesheet" href="bundle.css?v=9697bf57">
 <style>body{margin:0;background:#ffffff}</style>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&amp;family=Jost:wght@300;400;500;600&amp;display=swap">
 <style>
@@ -29,7 +29,7 @@ body{margin:0;background:#ffffff}
 .rp-ab-hero-rule{width:56px;height:1px;background:var(--rp-green-500)}
 
 /* Focus: the statement with the ripple */
-.rp .rp-ab-focus .rp-statement-in > p:not(.rp-label):not(.rp-accent){font-size:clamp(16px, 15.22px + 0.217vw, 18px);color:var(--rp-muted);max-width:600px}
+.rp .rp-ab-focus .rp-statement-in > p:not(.rp-label):not(.rp-accent){font-size:clamp(18px, 17.61px + 0.109vw, 19px);color:var(--rp-muted);max-width:600px}
 .rp .rp-ab-focus h2{font-size:clamp(34px, 26.17px + 2.174vw, 54px);font-style:italic;color:var(--rp-green-700);line-height:1.1}
 .rp .rp-ab-focus .rp-ab-intro{color:var(--rp-ink)}
 
@@ -80,7 +80,7 @@ body{margin:0;background:#ffffff}
 /* Closing panel */
 .rp-ab-close{padding:clamp(72px, 50px + 6vw, 128px) 0}
 .rp-ab-close-panel{background:var(--rp-green-100);border-radius:var(--rp-radius);padding:clamp(40px, 24px + 4.4vw, 88px) clamp(24px, 12px + 4vw, 72px);display:flex;flex-direction:column;align-items:center;text-align:center;gap:22px}
-.rp .rp-ab-close-panel > p:not(.rp-lead){font-size:clamp(16px, 15.22px + 0.217vw, 18px);color:var(--rp-muted)}
+.rp .rp-ab-close-panel > p:not(.rp-lead){font-size:clamp(18px, 17.61px + 0.109vw, 19px);color:var(--rp-muted)}
 .rp-ab-feel{list-style:none;padding:0;display:flex;flex-wrap:wrap;justify-content:center;gap:8px;max-width:760px}
 .rp-ab-feel li{background:#fff;border-radius:999px;padding:10px 20px;font-family:var(--rp-serif);font-size:clamp(18px, 17.22px + 0.217vw, 20px);font-style:italic;line-height:1.25;color:var(--rp-ink);transition:background-color .25s ease,color .25s ease}
 .rp-ab-feel li:hover{background:var(--rp-green-600);color:#fff}
@@ -104,7 +104,7 @@ body{margin:0;background:#ffffff}
 @media (max-width:400px){.rp-ab-settings li{padding:14px 14px 16px}}
 
 /* Body text: one size on every page (Jost Light 18px on desktop, 16px on phones) */
-.rp .rp-lead,.rp .rp-st-grow-text,.rp .rp-therapist p:not(.rp-label){font-size:clamp(16px, 15.22px + 0.217vw, 18px) !important;line-height:1.65 !important}
+.rp .rp-lead,.rp .rp-st-grow-text,.rp .rp-therapist p:not(.rp-label){font-size:clamp(18px, 17.61px + 0.109vw, 19px) !important;line-height:1.65 !important}
 @media (min-width:768px){.rp .rp-bento-stat > p:not(.rp-bento-num),.rp .rp-bento-quote p{font-size:18px !important;line-height:1.6 !important}}
 
 /* "Meet the therapist" is longer, so the menu folds into the menu button a little earlier */
@@ -148,6 +148,14 @@ body{margin:0;background:#ffffff}
 .rp-ab-facts > div.is-tap{background:var(--rp-green-50)}
 .rp-ab-feel li.is-tap{background:var(--rp-green-600);color:#fff}
 .rp .rp-ab-tags li.is-tap,.rp .rp-ab-settings li.is-tap{border-color:transparent !important}
+
+/* No moving ripples behind statements */
+.rp .rp-statement::before,.rp .rp-statement::after,.rp .rp-statement-in::before,.rp .rp-statement-in::after{content:none !important;display:none !important;animation:none !important}
+
+/* Bigger light text (body is 18px on phones, 19px on desktop) */
+.rp .rp-footer2 dd,.rp .rp-footer2 dd a{font-size:17px !important}
+.rp .rp-ab-facts dd,.rp .rp-ab-facts dd span:not(.rp-ab-big),.rp .rp-ab-facts dd li{font-size:17px !important}
+.rp ul.rp-ab-tags li{font-size:16.5px !important}
 </style>
 </head>
 <body>
@@ -254,15 +262,6 @@ body{margin:0;background:#ffffff}
 </ul>
 </div>
 
-<div class="rp-ab-block">
-<p class="rp-ab-intro">My experience spans</p>
-<ol class="rp-ab-settings">
-<li><span class="rp-num">01</span><span>hospital</span></li>
-<li><span class="rp-num">02</span><span>hospice</span></li>
-<li><span class="rp-num">03</span><span>school</span></li>
-<li><span class="rp-num">04</span><span>community</span></li>
-</ol>
-</div>
 
 <div class="rp-ab-block">
 <p class="rp-label">My approach is</p>

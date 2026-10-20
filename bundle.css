@@ -12,7 +12,7 @@
   --rp-gutter:clamp(20px, 11.39px + 2.391vw, 42px);
   --rp-ease:var(--ease-lift,cubic-bezier(.2,.7,.2,1));--rp-ease-reveal:var(--ease-reveal,cubic-bezier(.25,.6,.3,1));
   --rp-grain:url("assets/film-grain.png?v=0e3eab12");
-  background:var(--rp-white);color:var(--rp-ink);font-family:var(--rp-sans);font-size:clamp(16px, 15.22px + 0.217vw, 18px);line-height:1.65;font-weight:300;-webkit-font-smoothing:antialiased
+  background:var(--rp-white);color:var(--rp-ink);font-family:var(--rp-sans);font-size:clamp(18px, 17.61px + 0.109vw, 19px);line-height:1.65;font-weight:300;-webkit-font-smoothing:antialiased
 }
 .rp *{box-sizing:border-box}
 .rp p,.rp h1,.rp h2,.rp h3,.rp ul,.rp ol,.rp dl,.rp dd,.rp figure,.rp blockquote{margin:0}
