@@ -336,10 +336,9 @@ a:hover .rx-arrow,button:hover .rx-arrow{transform:translateX(4px)}
 .rp .rx-help-body .rx-p{margin:0}
 @media (max-width:900px){.rx-help{grid-template-columns:minmax(0, 1fr)}}
 
-/* Closing statements: still gradient rings, half opacity, no movement */
-.rp .rp-sv-note::before,.rp .rp-sv-note::after{border:2px solid transparent !important;background:linear-gradient(90deg, rgba(110,165,96,0) 0%, #5d9a52 28%, #9cc684 62%, rgba(156,198,132,0) 100%) border-box !important;-webkit-mask:linear-gradient(#000 0 0) padding-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask:linear-gradient(#000 0 0) padding-box exclude,linear-gradient(#000 0 0);animation:none !important;transition:none !important;opacity:.2 !important}
-.rp .rp-sv-note::before{transform:translate(-50%,-50%) scale(1) !important}
-.rp .rp-sv-note::after{transform:translate(-50%,-50%) scale(.62) !important}
+/* Closing statements: calm text, no ripples */
+.rp .rp-sv-note{padding:clamp(8px, 4px + 1vw, 20px) 16px}
+.rp .rp-sv-note::before,.rp .rp-sv-note::after{content:none !important;display:none !important;animation:none !important}
 
 /* Phones: floating Book an appointment pill */
 .rx-fab{display:none}
@@ -358,17 +357,39 @@ a:hover .rx-arrow,button:hover .rx-arrow{transform:translateX(4px)}
 /* Service card: the top section hugs the card, so the gap below it is one standard section gap */
 .rp .rx-tabpanel .rx-sec.rx-pane-top{padding-bottom:0}
 
-/* Services banner: full-width photo banner in the family of Home and Story */
-.rp .rx-sv-hero .rp-hb{align-items:flex-end;justify-content:flex-start;min-height:clamp(420px, 62vh, 560px);clip-path:inset(0 round clamp(24px, 14px + 2.4vw, 44px))}
-.rp .rx-sv-hero .rp-hb::after,.rp .rx-sv-hero .rp-hb-bg{border-radius:inherit}
-.rp .rx-sv-hero .rp-hb-bg{object-position:50% 34%;filter:grayscale(.08) contrast(.98) brightness(.97)}
-.rp .rx-sv-hero .rp-hb-shade{background:linear-gradient(200deg, rgba(18,32,22,0) 28%, rgba(18,32,22,.62) 100%)}
-.rp .rx-sv-hero .rp-hb-content{align-items:flex-start;text-align:left;margin:0;max-width:760px;gap:14px;padding:0 clamp(24px, 4.4vw, 80px) clamp(36px, 26px + 3vw, 68px)}
-.rp .rx-sv-hero .rp-hb-title{margin:0;font-size:clamp(52px, 32px + 4.6vw, 92px) !important;line-height:1;font-weight:400;letter-spacing:-.01em;text-shadow:0 2px 30px rgba(0,0,0,.35);max-width:none}
-.rp .rx-hb-sub{margin:0;text-wrap:balance;color:#fff;font-family:var(--rp-sans);font-size:clamp(18px, 16.6px + .4vw, 22px);font-weight:300;line-height:1.5;text-shadow:0 1px 14px rgba(0,0,0,.5)}
-.rx-hb-cta{margin-top:12px}
-@media (prefers-reduced-motion:no-preference){.rx-hb-sub{animation:rp-rise 1s cubic-bezier(.2,.7,.2,1) .9s both}.rx-hb-cta{animation:rp-rise 1s cubic-bezier(.2,.7,.2,1) 1.05s both}}
-@media (max-width:767px){.rp .rx-sv-hero .rp-hb-bg{object-position:50% 55%}.rp .rx-sv-hero .rp-hb{min-height:clamp(380px, 70vh, 480px)}.rp .rx-sv-hero .rp-hb-content{padding:0 22px 32px}.rx-hb-cta{display:none}}
+
+/* Services banner: two photo prints on white, each opens its service */
+.rx-hero2{padding:clamp(24px, 12px + 3vw, 64px) 0 clamp(48px, 32px + 4vw, 104px)}
+.rx-hero2-grid{display:grid;grid-template-columns:minmax(0, 1.1fr) minmax(0, .9fr);gap:clamp(32px, 16px + 4vw, 88px);align-items:center}
+.rx-prints{position:relative;aspect-ratio:6 / 5;max-width:620px;width:100%}
+.rp button.rx-print{appearance:none;-webkit-appearance:none;position:absolute;display:flex;flex-direction:column;margin:0;padding:10px 10px 0;border:0;border-radius:4px;background:#fff;font:inherit;color:var(--rp-ink);text-align:left;cursor:pointer;box-shadow:0 2px 6px rgba(20,40,25,.08),0 18px 40px rgba(20,40,25,.14);transition:transform .45s cubic-bezier(.2,.7,.2,1),box-shadow .45s ease}
+.rx-print-a{top:0;right:2%;width:62%;transform:rotate(3deg);z-index:2}
+.rx-print-b{left:0;bottom:0;width:56%;transform:rotate(-4deg);z-index:1}
+.rx-print-img{display:block;aspect-ratio:5 / 4;overflow:hidden;border-radius:2px;background:var(--rp-green-100)}
+.rx-print-img img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(.2,.7,.2,1)}
+.rx-print-cap{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 6px 14px;font-family:var(--rp-serif);font-size:clamp(17px, 14px + .7vw, 22px);font-weight:500;line-height:1.2;transition:color .3s ease}
+.rx-print-arrow{flex:0 0 auto;font-family:var(--rp-sans);font-size:16px;color:var(--rp-green-600);transition:transform .3s ease}
+.rp button.rx-print:hover,.rp button.rx-print:focus-visible{transform:rotate(0deg) translateY(-8px) scale(1.02);z-index:3;box-shadow:0 4px 10px rgba(20,40,25,.1),0 28px 56px rgba(20,40,25,.2)}
+.rp button.rx-print:hover .rx-print-img img,.rp button.rx-print:focus-visible .rx-print-img img{transform:scale(1.05)}
+.rp button.rx-print:hover .rx-print-cap,.rp button.rx-print:focus-visible .rx-print-cap{color:var(--rp-green-700)}
+.rp button.rx-print:hover .rx-print-arrow,.rp button.rx-print:focus-visible .rx-print-arrow{transform:translateX(4px)}
+.rp button.rx-print:focus-visible{outline:2px solid var(--rp-green-600);outline-offset:4px}
+@media (prefers-reduced-motion:no-preference){.rx-print-a{animation:rx-print-in-a .9s cubic-bezier(.2,.7,.2,1) .15s both}.rx-print-b{animation:rx-print-in-b .9s cubic-bezier(.2,.7,.2,1) .35s both}}
+@keyframes rx-print-in-a{from{opacity:0;transform:rotate(8deg) translateY(24px)}to{opacity:1;transform:rotate(3deg)}}
+@keyframes rx-print-in-b{from{opacity:0;transform:rotate(-9deg) translateY(24px)}to{opacity:1;transform:rotate(-4deg)}}
+.rx-hero2 .rx-hero-copy{gap:22px}
+@media (max-width:1024px){
+.rx-hero2-grid{grid-template-columns:minmax(0, 1fr)}
+.rx-hero2 .rx-hero-copy{order:-1}
+.rx-prints{margin:0 auto;max-width:560px}
+}
+@media (max-width:767px){
+.rx-prints{aspect-ratio:1 / 1.02}
+.rx-print-a{width:74%;right:0}
+.rx-print-b{width:70%}
+.rp button.rx-print{padding:8px 8px 0}
+.rx-print-cap{padding:10px 4px 12px;font-size:17px}
+}
 </style>
 </head>
 <body>
@@ -427,14 +448,18 @@ a:hover .rx-arrow,button:hover .rx-arrow{transform:translateX(4px)}
 </div>
 </header>
 
-<section class="rp-hero rx-sv-hero">
-<div class="rp-hb">
-<img class="rp-hb-bg" src="assets/service-notebook.webp?v=33d532a4" alt="A person writing in a notebook during a calm therapy session" width="1024" height="1536">
-<div class="rp-hb-shade" aria-hidden="true"></div>
-<div class="rp-hb-content">
-<h1 class="rp-hb-title">Services</h1>
-<p class="rx-hb-sub">Individual virtual therapy for adults across Ontario</p>
-<div class="rx-hb-cta"><a class="rp-btn rp-btn-light" href="https://book.carepatron.com/Root-Within/Karina?p=IycEjDdITNqGgzR2wNuk-g&amp;s=QvtfvDXC&amp;step=service" target="_blank" rel="noopener">Book an appointment</a></div>
+<section class="rx-hero rx-hero2">
+<div class="rp-wrap">
+<div class="rx-hero2-grid">
+<div class="rx-prints">
+<button class="rx-print rx-print-a" type="button" aria-controls="rp-sv-psy" data-dc-on-click="heroPsy"><span class="rx-print-img"><img src="assets/service-plant-roots.webp?v=e5a66987" alt="Hands holding a young plant with its roots" style="object-position: 50% 55%"></span><span class="rx-print-cap"><span>Individual Psychotherapy</span><span class="rx-print-arrow" aria-hidden="true">&rarr;</span></span></button>
+<button class="rx-print rx-print-b" type="button" aria-controls="rp-sv-grief" data-dc-on-click="heroGrief"><span class="rx-print-img"><img src="assets/service-meadow-tree.webp?v=b98eefda" alt="Rain drops resting on green leaves" style="object-position: 50% 50%"></span><span class="rx-print-cap"><span>Grief and Bereavement Counselling</span><span class="rx-print-arrow" aria-hidden="true">&rarr;</span></span></button>
+</div>
+<div class="rx-hero-copy">
+<h1 class="rx-h1">Services</h1>
+<p class="rx-sub">Individual virtual therapy for adults across Ontario</p>
+<div class="rx-btns"><a class="rp-btn rp-btn-primary" href="https://book.carepatron.com/Root-Within/Karina?p=IycEjDdITNqGgzR2wNuk-g&amp;s=QvtfvDXC&amp;step=service" target="_blank" rel="noopener">Book an appointment</a></div>
+</div>
 </div>
 </div>
 </section>
@@ -812,6 +837,15 @@ class Component extends DCLogic {
       window.removeEventListener('resize', this._rpScroll);
     }
   }
+  _rpShowTab(tab) {
+    // banner photos: open that service and scroll down to it
+    this.setState({ tab });
+    const set = document.querySelector('.rx-tabset');
+    if (!set) return;
+    const y = set.getBoundingClientRect().top + (window.scrollY || 0) - 24;
+    window.scrollTo({ top: y, behavior: 'smooth' });
+  }
+
   _rpGoTab(tab) {
     // switch service, then bring the tabs back into view so the new service reads from its top
     this.setState({ tab });
@@ -840,6 +874,8 @@ class Component extends DCLogic {
       griefFamEx: this.state.griefFam ? 'true' : 'false',
       griefFamT: () => this.setState({ griefFam: !this.state.griefFam }),
       nextGrief: () => this._rpGoTab('grief'),
+      heroPsy: () => this._rpShowTab('psy'),
+      heroGrief: () => this._rpShowTab('grief'),
       nextPsy: () => this._rpGoTab('psy'),
       closeMenu: () => this.setState({ menuOpen: false }),
       menuOpen: open,
