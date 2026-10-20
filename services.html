@@ -407,6 +407,13 @@ a:hover .rx-arrow,button:hover .rx-arrow{transform:translateX(4px)}
 @media (max-width:767px){.rp button.rx-tab,.rp button.rx-tab.is-on{padding-top:12px !important;padding-bottom:14px !important}}
 /* Phones: banner photos a little smaller, overlapping only at one corner */
 @media (max-width:767px){.rx-prints{aspect-ratio:1 / 1.2;max-width:400px}.rx-print-a{width:62%}.rx-print-b{width:60%}}
+
+/* Root marks emerge: the ground line draws across, then the roots grow down, each time they scroll into view */
+@keyframes rp-root-grow{0%{clip-path:inset(0 100% 86% 0);opacity:0}30%{clip-path:inset(0 0 86% 0);opacity:.22}100%{clip-path:inset(0 0 0 0);opacity:.22}}
+.rp-js .rp-deco{opacity:0}
+.rp-js .rp-deco.is-grown{animation:rp-root-grow 2.6s cubic-bezier(.3,.6,.3,1) both}
+.rp-js .rp-deco-r.is-grown{animation-delay:.45s}
+@media (prefers-reduced-motion:reduce){.rp-js .rp-deco{opacity:.22;animation:none !important}}
 </style>
 </head>
 <body>
@@ -718,6 +725,18 @@ class Component extends DCLogic {
     // close the side menu if the screen becomes wide enough for the full menu bar
     this._rpWide = () => { if ((window.innerWidth || 0) > 1220 && this.state.menuOpen) this.setState({ menuOpen: false }); };
     window.addEventListener('resize', this._rpWide);
+    // root marks: grow in when they scroll into view (and again on the next pass)
+    if (window.IntersectionObserver) {
+      // watch the section that holds the marks (the marks themselves are clipped while they grow)
+      this._rpDecoIO = new IntersectionObserver((es) => {
+        es.forEach((e) => e.target.querySelectorAll(':scope > .rp-deco').forEach((d) => d.classList.toggle('is-grown', e.isIntersecting)));
+      }, { threshold: 0.3 });
+      const hosts = new Set();
+      document.querySelectorAll('.rp-deco').forEach((d) => hosts.add(d.parentElement));
+      hosts.forEach((h) => this._rpDecoIO.observe(h));
+    } else {
+      document.querySelectorAll('.rp-deco').forEach((d) => d.classList.add('is-grown'));
+    }
     // tap or click shows the same effect as hover (touch screens have no hover); tap again or elsewhere to clear
     const tapSel = [".rp-bento-stat", ".rp-bento-photo", ".rp-bento-feature", ".rp-areas-list li", ".rp-fact", ".rp-begin-media", ".rp-therapist", ".rx-hero-media", ".rx-step", ".rx-card", ".rp ul.rx-chips li", ".rx-band-media", ".rp ul.rx-list > li", ".rx-tabpanel .rx-cards .rx-card", ".rp .rx-tabpanel .rx-cards .rx-card"];
     this._rpTap = (e) => {
@@ -837,6 +856,7 @@ class Component extends DCLogic {
   }
   componentWillUnmount() {
     if (this._rpWide) window.removeEventListener('resize', this._rpWide);
+    if (this._rpDecoIO) this._rpDecoIO.disconnect();
     if (this._rpTap) document.removeEventListener('click', this._rpTap);
     if (this._rpIO) this._rpIO.disconnect();
     if (this._rpScroll) {
