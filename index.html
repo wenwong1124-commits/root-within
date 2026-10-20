@@ -669,6 +669,9 @@ html{scroll-behavior:smooth}
 @media (min-width:768px) and (max-width:1024px){.rp .rp-bento-feature{justify-content:center}.rp .rp-bento-feature .rp-bento-portrait{width:72% !important}}
 /* Phones: hero headline smaller, two lines at most */
 @media (max-width:767px){.rp .rp-hb .rp-hb-title{font-size:clamp(22px, 7.2vw, 31px) !important;line-height:1.15 !important;text-wrap:balance}}
+/* Hero: the leaf, headline and Ontario line rest just above the bench (gap set from the photo in JS) */
+.rp .rp-hero .rp-hb-content{margin-top:auto !important;margin-bottom:0 !important;padding-top:24px !important;padding-bottom:var(--rp-bench, 38%) !important}
+@media (max-width:767px){.rp .rp-hero .rp-hb{justify-content:flex-end !important}}
 </style>
 </head>
 <body>
@@ -928,6 +931,26 @@ class Component extends DCLogic {
     // close the side menu if the screen becomes wide enough for the full menu bar
     this._rpWide = () => { if ((window.innerWidth || 0) > 1220 && this.state.menuOpen) this.setState({ menuOpen: false }); };
     window.addEventListener('resize', this._rpWide);
+    // hero: keep the headline group sitting just above the bench in the photo, at any size
+    this._rpBench = () => {
+      const hb = document.querySelector('.rp-hero .rp-hb');
+      const img = hb && hb.querySelector('.rp-hb-bg');
+      if (!hb || !img || !img.naturalWidth) return;
+      const W = hb.clientWidth, H = hb.clientHeight;
+      const sc = Math.max(W / img.naturalWidth, H / img.naturalHeight);
+      const dh = img.naturalHeight * sc;
+      const py = parseFloat((getComputedStyle(img).objectPosition.split(' ')[1]) || '50') / 100;
+      const benchTop = (H - dh) * py + 0.622 * dh; // top of the bench backrest in the photo
+      const gap = W < 768 ? 10 : 14;
+      hb.style.setProperty('--rp-bench', Math.max(24, Math.round(H - benchTop + gap)) + 'px');
+    };
+    const benchImg = document.querySelector('.rp-hero .rp-hb-bg');
+    if (benchImg && !benchImg.complete) benchImg.addEventListener('load', this._rpBench, { once: true });
+    this._rpBench();
+    window.addEventListener('resize', this._rpBench);
+    const benchHost = document.querySelector('.rp-hero .rp-hb');
+    if (benchHost && window.ResizeObserver) { this._rpBenchRO = new ResizeObserver(() => this._rpBench()); this._rpBenchRO.observe(benchHost); }
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => this._rpBench && this._rpBench());
     // tap or click shows the same effect as hover (touch screens have no hover); tap again or elsewhere to clear
     const tapSel = [".rp-banner-media", ".rp .rp-bento-stat", ".rp .rp-bento-feature", ".rp-statement-in", ".rp-card", ".rp-ph", ".rp-fact", ".rp-therapist", ".rp-bento-stat", ".rp-bento-photo", ".rp-bento-feature", ".rp-areas-list li", ".rp-begin-media", ".rp .rp-steps li", ".rp .rp-fact", ".rp .rp-card"];
     this._rpTap = (e) => {
@@ -1049,6 +1072,8 @@ class Component extends DCLogic {
   }
   componentWillUnmount() {
     if (this._rpWide) window.removeEventListener('resize', this._rpWide);
+    if (this._rpBench) window.removeEventListener('resize', this._rpBench);
+    if (this._rpBenchRO) this._rpBenchRO.disconnect();
     if (this._rpTap) document.removeEventListener('click', this._rpTap);
     if (this._rpIO) this._rpIO.disconnect();
     if (this._rpScroll) {
