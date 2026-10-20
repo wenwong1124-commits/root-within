@@ -296,7 +296,6 @@ a:hover .rx-arrow,button:hover .rx-arrow{transform:translateX(4px)}
 }
 @media (max-width:767px){.rx-hero-copy .rx-btns{align-self:stretch}}
 /* Phones: hide the hero Book button (booking stays in the menu and the service tabs) */
-@media (max-width:767px){.rp .rx-hero .rx-btns{display:none}}
 
 /* Next-service button at the end of each tab */
 .rx-next{display:flex;justify-content:center;margin-top:clamp(8px, 4px + 1.5vw, 24px)}
@@ -340,12 +339,6 @@ a:hover .rx-arrow,button:hover .rx-arrow{transform:translateX(4px)}
 .rp .rp-sv-note{padding:clamp(8px, 4px + 1vw, 20px) 16px}
 .rp .rp-sv-note::before,.rp .rp-sv-note::after{content:none !important;display:none !important;animation:none !important}
 
-/* Phones: floating Book an appointment pill */
-.rx-fab{display:none}
-@media (max-width:767px){
-.rp a.rx-fab{display:inline-flex;position:fixed;left:16px;right:76px;bottom:max(16px, env(safe-area-inset-bottom));z-index:44;justify-content:center;min-height:50px;border-radius:999px;box-shadow:0 12px 28px rgba(20,40,25,.22);transition:opacity .3s ease,transform .35s cubic-bezier(.2,.7,.2,1)}
-.rp a.rx-fab.is-away{opacity:0;transform:translateY(24px);pointer-events:none}
-}
 
 /* Bigger light text (body is 18px on phones, 19px on desktop) */
 .rp .rp-footer2 dd,.rp .rp-footer2 dd a{font-size:17px !important}
@@ -405,6 +398,8 @@ a:hover .rx-arrow,button:hover .rx-arrow{transform:translateX(4px)}
 .rp .rp-sv-note > .rp-deco-r{right:0;top:50%;width:150px;height:72px;transform:translateY(-20%)}
 .rp .rp-sv-note{padding-left:170px;padding-right:170px}
 @media (max-width:1099px){.rp .rp-sv-note{padding-left:16px;padding-right:16px}}
+/* Phones: Book button stays in the banner, after the text */
+@media (max-width:767px){.rp .rx-hero2 .rx-btns{display:flex;align-self:center;justify-content:center}.rp .rx-hero2 .rx-btns .rp-btn{width:auto}}
 </style>
 </head>
 <body>
@@ -634,8 +629,6 @@ a:hover .rx-arrow,button:hover .rx-arrow{transform:translateX(4px)}
 </div>
 </section>
 
-<a class="rx-fab rp-btn rp-btn-primary" href="https://book.carepatron.com/Root-Within/Karina?p=IycEjDdITNqGgzR2wNuk-g&amp;s=QvtfvDXC&amp;step=service" target="_blank" rel="noopener">Book an appointment</a>
-
 <footer class="rp-footer2">
 <div class="rp-wrap">
 <div class="rp-footer2-grid">
@@ -718,13 +711,6 @@ class Component extends DCLogic {
     // close the side menu if the screen becomes wide enough for the full menu bar
     this._rpWide = () => { if ((window.innerWidth || 0) > 1220 && this.state.menuOpen) this.setState({ menuOpen: false }); };
     window.addEventListener('resize', this._rpWide);
-    // phones: the floating Book pill steps aside when the footer comes into view
-    const fab = document.querySelector('.rx-fab');
-    const foot = document.querySelector('.rp-footer2');
-    if (fab && foot && window.IntersectionObserver) {
-      this._rpFabIO = new IntersectionObserver((es) => { es.forEach((e) => fab.classList.toggle('is-away', e.isIntersecting)); }, { threshold: 0 });
-      this._rpFabIO.observe(foot);
-    }
     // tap or click shows the same effect as hover (touch screens have no hover); tap again or elsewhere to clear
     const tapSel = [".rp-bento-stat", ".rp-bento-photo", ".rp-bento-feature", ".rp-areas-list li", ".rp-fact", ".rp-begin-media", ".rp-therapist", ".rx-hero-media", ".rx-step", ".rx-card", ".rp ul.rx-chips li", ".rx-band-media", ".rp ul.rx-list > li", ".rx-tabpanel .rx-cards .rx-card", ".rp .rx-tabpanel .rx-cards .rx-card"];
     this._rpTap = (e) => {
@@ -844,7 +830,6 @@ class Component extends DCLogic {
   }
   componentWillUnmount() {
     if (this._rpWide) window.removeEventListener('resize', this._rpWide);
-    if (this._rpFabIO) this._rpFabIO.disconnect();
     if (this._rpTap) document.removeEventListener('click', this._rpTap);
     if (this._rpIO) this._rpIO.disconnect();
     if (this._rpScroll) {
